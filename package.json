@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
-    "build": "eslint src && babel -D src -d dist",
+    "build": "eslint src && babel -D src -d dist && cp node_modules/dygraphs/dist/dygraph.css dist",
     "test": "karma start karma-ci.conf.js",
     "local-test": "karma start karma.conf.js --single-run",
     "prepublish": "npm run build",
@@ -64,6 +64,6 @@
     "email": "motiz88@gmail.com"
   },
   "dependencies": {
-    "dygraphs-commonjs": "^1.1.1"
+    "dygraphs": "^2.0.0"
   }
 }
