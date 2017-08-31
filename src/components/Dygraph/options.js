@@ -66,8 +66,6 @@ const options = {
     isZoomedIgnoreProgrammaticZoom: true,
     labels: {type: p.arrayOf(p.string)},
     labelsDiv: true,
-    labelsDivStyles: true,
-    labelsDivWidth: {type: p.number},
     labelsKMB: {type: p.boolean},
     labelsKMG2: {type: p.boolean},
     labelsSeparateLines: {type: p.boolean},

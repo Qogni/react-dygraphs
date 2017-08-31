@@ -1,5 +1,5 @@
 import React from 'react';
-import DygraphBase from 'dygraphs-commonjs';
+import DygraphBase from 'dygraphs';
 import {propTypes as dygraphPropTypes, spreadProps as spreadKnownProps} from './Dygraph/options';
 
 class InteractionModelProxy {
@@ -21,7 +21,7 @@ class InteractionModelProxy {
         });
     }
 
-    _target = DygraphBase.Interaction.defaultModel;
+    _target = DygraphBase.defaultInteractionModel;
 }
 
 export default class Dygraph extends React.Component {
@@ -36,16 +36,16 @@ export default class Dygraph extends React.Component {
     componentDidMount() {
         const {known: initAttrs} = spreadKnownProps(this.props, true);
         this._interactionProxy._target =
-            initAttrs.interactionModel || DygraphBase.Interaction.defaultModel;
+            initAttrs.interactionModel || DygraphBase.defaultInteractionModel;
         initAttrs.interactionModel = this._interactionProxy;
-        this._dygraph = new DygraphBase(this.refs.root, this.props.data, initAttrs);
+        this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs);
     }
 
     componentWillUpdate(nextProps/*, nextState*/) {
         if (this._dygraph) {
             const {known: updateAttrs} = spreadKnownProps(nextProps, false);
             this._interactionProxy._target =
-                updateAttrs.interactionModel || DygraphBase.Interaction.defaultModel;
+                updateAttrs.interactionModel || DygraphBase.defaultInteractionModel;
             updateAttrs.interactionModel = this._interactionProxy;
             this._dygraph.updateOptions(updateAttrs);
         }
@@ -63,7 +63,7 @@ export default class Dygraph extends React.Component {
     render() {
         return (
             <div
-                ref='root'
+                ref={(root) => this.root = root}
                 style={this.props.style}
             />
         );
