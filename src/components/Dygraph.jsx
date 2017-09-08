@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DygraphBase from 'dygraphs';
 import {propTypes as dygraphPropTypes, spreadProps as spreadKnownProps} from './Dygraph/options';
 
@@ -27,7 +28,7 @@ class InteractionModelProxy {
 export default class Dygraph extends React.Component {
     displayName = 'Dygraph';
 
-    static propTypes = Object.assign({style: React.PropTypes.object}, dygraphPropTypes);
+    static propTypes = Object.assign({style: PropTypes.object}, dygraphPropTypes);
 
     constructor(props) {
         super(props);
