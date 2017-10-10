@@ -71,7 +71,7 @@ const options = {
     labelsSeparateLines: {type: p.boolean},
     labelsShowZeroValues: {type: p.boolean},
     labelsUTC: {type: p.boolean},
-    legend: p.oneOf(['onmouseover', 'always', 'follow']),
+    legend: p.oneOf(['onmouseover', 'always', 'follow', 'never']),
     legendFormatter: {type: p.func},
     logscale: {type: p.boolean},
     maxNumberWidth: {type: p.number},
