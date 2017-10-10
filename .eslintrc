@@ -25,7 +25,6 @@
     jsx-quotes:
       - 1
       - prefer-single
-    react/jsx-sort-prop-types: 1
     react/jsx-sort-props: 1
     react/jsx-uses-react: 1
     react/jsx-uses-vars: 1
@@ -42,4 +41,5 @@
     react/require-extension: 1
     react/self-closing-comp: 1
     react/sort-comp: 1
+    react/sort-prop-types: 1
     react/wrap-multilines: 1
