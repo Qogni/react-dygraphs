@@ -39,10 +39,7 @@ const options = {
     file: {
         type: p.oneOfType([
             p.string /* CSV or URL */ ,
-            p.arrayOf(p.arrayOf(p.oneOfType([
-                p.instanceOf(Date),
-                p.number
-            ]))),
+            p.array,
             p.func
         ]).isRequired,
         rename: 'data',
