@@ -10,11 +10,11 @@ module.exports = {
         loaders: [{
             test: /\.jsx?$/,
             exclude: /(bower_components|node_modules)/,
-            loaders: ['react-hot', 'babel']
+            loaders: ['react-hot-loader', 'babel-loader']
         }]
     },
     resolve: {
-        extensions: ['', '.js', '.json', '.jsx']
+        extensions: ['.js', '.json', '.jsx']
     },
     entry: {
         demo: [

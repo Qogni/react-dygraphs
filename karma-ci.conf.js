@@ -7,7 +7,6 @@ module.exports = function(config) {
         basePath: '',
         frameworks: ['mocha', 'sinon-chai'],
         files: [
-            './node_modules/phantomjs-polyfill/bind-polyfill.js',
             'test/index.js',
         ],
         exclude: [],
@@ -16,21 +15,15 @@ module.exports = function(config) {
         },
         webpack: {
             module: {
-                preLoaders: [{
+                rules: [{
                     test: /\.jsx?$/,
-                    exclude: [
-                        path.resolve('src/components/'),
-                        path.resolve('node_modules/')
-                    ],
-                    loader: 'babel'
-                }, {
-                    test: /\.jsx?$/,
-                    include: path.resolve('src/components/'),
-                    loader: 'isparta'
+                    enforce: "pre",
+                    exclude: path.resolve('node_modules/'),
+                    loader: 'babel-loader'
                 }]
             },
             resolve: {
-                extensions: ['', '.js', '.json', '.jsx']
+                extensions: ['.js', '.json', '.jsx']
             },
             devtool: 'inline-source-map'
         },
@@ -41,12 +34,12 @@ module.exports = function(config) {
         webpackMiddleware: {
             noInfo: true
         },
-        reporters: ['progress', 'coverage', 'coveralls'],
+        reporters: ['progress', 'coverage'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Firefox', 'PhantomJS'],
+        browsers: ['ChromeHeadless'],
         singleRun: true,
         concurrency: Infinity
     })

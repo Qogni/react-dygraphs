@@ -1,6 +1,6 @@
 import {Dygraph} from '../../src';
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 describe('Dygraph', function() {
     it('should be a function', function() {
@@ -10,8 +10,8 @@ describe('Dygraph', function() {
         expect(new Dygraph()).to.be.an.instanceof(React.Component);
     });
     it('should render a div', function() {
-        const renderer = ReactTestUtils.createRenderer();
-        renderer.render(<Dygraph />);
+        const renderer = new ShallowRenderer();
+        renderer.render(<Dygraph />)
         const result = renderer.getRenderOutput();
         expect(result.type).to.equal('div');
     });
