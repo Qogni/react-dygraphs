@@ -15,6 +15,12 @@
     "check-style": "npm run eclint && npm run eslint"
   },
   "author": "Moti Zilberman <motiz88@gmail.com>",
+  "contributors": [
+    {
+      "name": "Rodrigo Saboya",
+      "email": "saboya@users.noreply.github.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
