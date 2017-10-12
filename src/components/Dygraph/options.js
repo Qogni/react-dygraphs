@@ -120,11 +120,7 @@ const options = {
     zoomCallback: {type: p.func, rename: 'onZoom'},
 };
 
-type PropConfig = boolean | {
-    type ? : Function, private ? : boolean, rename ? : string
-};
-
-function getPropType(optionPropConfig: PropConfig) {
+function getPropType(optionPropConfig) {
     if (!optionPropConfig)
         return undefined;
     if (optionPropConfig === true)
@@ -136,7 +132,7 @@ function getPropType(optionPropConfig: PropConfig) {
     return optionPropConfig.type;
 }
 
-function getPropName(optionPropConfig: PropConfig, optionName?: string) {
+function getPropName(optionPropConfig, optionName) {
     if (!optionPropConfig || optionPropConfig === true)
         return optionName;
     if (typeof optionPropConfig.rename === 'string')
@@ -144,7 +140,7 @@ function getPropName(optionPropConfig: PropConfig, optionName?: string) {
     return optionName;
 }
 
-function optionIsPrivate(optionPropConfig: PropConfig)
+function optionIsPrivate(optionPropConfig)
 {
     if (optionPropConfig === false)
         return true;
@@ -155,7 +151,7 @@ function optionIsPrivate(optionPropConfig: PropConfig)
     return optionPropConfig.private;
 }
 
-function optionHideOnInit(optionPropConfig: PropConfig)
+function optionHideOnInit(optionPropConfig)
 {
     if (optionPropConfig === false)
         return false;
