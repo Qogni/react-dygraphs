@@ -108,7 +108,7 @@ const options = {
     unhighlightCallback: {type: p.func, rename: 'onUnhighlight'},
     valueFormatter: true,
     valueRange: true,
-    visibility: {type: p.arrayOf(p.boolean)},
+    visibility: {type: p.array},
     width: {type: p.number},
     wilsonInterval: true,
     xAxisHeight: {type: p.number},
