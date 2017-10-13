@@ -7,11 +7,6 @@ export default [
   {
     input: 'src/index.js',
     external: ['react', 'prop-types', 'dygraphs'],
-    output: {
-      file: pkg.main,
-      format: 'cjs',
-      exports: 'named',
-    },
     plugins: [
       resolve({
         jsnext: true,
@@ -21,6 +16,18 @@ export default [
         exclude: 'node_modules/**',
       }),
       filesize(),
+    ],
+    output: [
+      {
+        file: pkg.main,
+        format: 'cjs',
+        exports: 'named',
+      },
+      {
+        file: pkg['jsnext:main'],
+        format: 'es',
+        exports: 'named',
+      },
     ],
   },
 ]
