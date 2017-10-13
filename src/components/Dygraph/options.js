@@ -40,10 +40,10 @@ const options = {
     type: p.oneOfType([
       p.string /* CSV or URL */,
       p.array,
-      p.func
+      p.func,
     ]).isRequired,
     rename: 'data',
-    hideOnInit: true
+    hideOnInit: true,
   },
   fillAlpha: {type: p.number},
   fillGraph: {type: p.boolean},
@@ -121,42 +121,50 @@ const options = {
 }
 
 function getPropType (optionPropConfig) {
-  if (!optionPropConfig)
+  if (!optionPropConfig) {
     return undefined
-  if (optionPropConfig === true)
+  } else if (optionPropConfig === true) {
     return p.any
-  if (optionPropConfig.private)
+  } else if (optionPropConfig.private) {
     return undefined
-  if (!optionPropConfig.type)
+  } else if (!optionPropConfig.type) {
     return p.any
+  }
+
   return optionPropConfig.type
 }
 
 function getPropName (optionPropConfig, optionName) {
-  if (!optionPropConfig || optionPropConfig === true)
+  if (!optionPropConfig || optionPropConfig === true) {
     return optionName
-  if (typeof optionPropConfig.rename === 'string')
+  } else if (typeof optionPropConfig.rename === 'string') {
     return optionPropConfig.rename
+  }
+
   return optionName
 }
 
 function optionIsPrivate (optionPropConfig) {
-  if (optionPropConfig === false)
+  if (optionPropConfig === false) {
     return true
-  if (!optionPropConfig)
+  } else if (!optionPropConfig) {
     return undefined
-  if (optionPropConfig === true)
+  } else if (optionPropConfig === true) {
     return false
+  }
+
   return optionPropConfig.private
 }
 
 function optionHideOnInit (optionPropConfig) {
-  if (optionPropConfig === false)
+  if (optionPropConfig === false) {
     return false
-  if (!optionPropConfig)
+  } else if (!optionPropConfig) {
     return false
-  if (optionPropConfig === true)
+  } else if (optionPropConfig === true) {
     return false
+  }
+
   return optionPropConfig.hideOnInit
 }
 
@@ -187,14 +195,17 @@ function getPropMap (options) {
 const propMap = getPropMap(options)
 
 function spreadProps (props, isInit) {
-  const known = {}, rest = {}
+  const known = {}
+  const rest = {}
+
   for (const propName in props) {
     const isDygraphsProp = !!propMap[propName]
     if (isDygraphsProp) {
-      if (isInit && optionHideOnInit(options[propMap[propName]]))
+      if ((isInit && optionHideOnInit(options[propMap[propName]])) ||
+        optionIsPrivate(options[propMap[propName]])
+      ) {
         continue
-      if (optionIsPrivate(options[propMap[propName]]))
-        continue
+      }
     }
     let target = isDygraphsProp ? known : rest
     const nameOut = isDygraphsProp ? propMap[propName] : propName
@@ -207,5 +218,8 @@ const propTypes = getReactPropTypes(options)
 
 export default options
 export {
-  options, propTypes, propMap, spreadProps
+  options,
+  propTypes,
+  propMap,
+  spreadProps,
 }

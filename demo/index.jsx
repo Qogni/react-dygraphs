@@ -9,10 +9,6 @@ document.body.appendChild(container)
 class DygraphDemo extends React.Component {
   displayName = 'DygraphDemo'
 
-  constructor (props) {
-    super(props)
-  }
-
   state = {
     zoom: null,
     clicked: null,
@@ -43,4 +39,4 @@ class DygraphDemo extends React.Component {
   }
 }
 
-ReactDOM.render(<DygraphDemo/>, container)
+ReactDOM.render(<DygraphDemo />, container)

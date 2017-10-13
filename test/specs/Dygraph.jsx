@@ -11,7 +11,7 @@ describe('Dygraph', function () {
   })
   it('should render a div', function () {
     const renderer = new ShallowRenderer()
-    renderer.render(<Dygraph/>)
+    renderer.render(<Dygraph />)
     const result = renderer.getRenderOutput()
     expect(result.type).to.equal('div')
   })

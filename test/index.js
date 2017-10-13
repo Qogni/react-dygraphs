@@ -1,3 +1,5 @@
+/* eslint-disable import/no-duplicates */
+
 import ModuleDefaultComponent from '../src'
 import { Dygraph } from '../src'
 

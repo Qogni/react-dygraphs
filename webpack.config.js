@@ -12,30 +12,30 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /(bower_components|node_modules)/,
-      loaders: ['react-hot-loader', 'babel-loader']
-    }]
+      loaders: ['react-hot-loader', 'babel-loader'],
+    }],
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx']
+    extensions: ['.js', '.json', '.jsx'],
   },
   entry: {
     demo: [
       'webpack-dev-server/client?http://0.0.0.0:' + port, // WebpackDevServer host and port
       'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-      './demo' // Your appʼs entry point
-    ]
+      './demo', // Your appʼs entry point
+    ],
   },
   output: {
     // Make sure to use [name] or [id] in output.filename
     //  when using multiple entry points
     filename: '[name].bundle.js',
-    chunkFilename: '[id].bundle.js'
+    chunkFilename: '[id].bundle.js',
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'demo/assets'),
-    port: port
+    port: port,
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 }

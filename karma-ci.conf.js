@@ -19,20 +19,20 @@ module.exports = function (config) {
           test: /\.jsx?$/,
           enforce: 'pre',
           exclude: path.resolve('node_modules/'),
-          loader: 'babel-loader'
-        }]
+          loader: 'babel-loader',
+        }],
       },
       resolve: {
-        extensions: ['.js', '.json', '.jsx']
+        extensions: ['.js', '.json', '.jsx'],
       },
-      devtool: 'inline-source-map'
+      devtool: 'inline-source-map',
     },
     coverageReporter: {
       type: 'lcov',
-      dir: 'coverage/'
+      dir: 'coverage/',
     },
     webpackMiddleware: {
-      noInfo: true
+      noInfo: true,
     },
     reporters: ['progress', 'coverage'],
     port: 9876,
@@ -41,6 +41,6 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['ChromeHeadless'],
     singleRun: true,
-    concurrency: Infinity
+    concurrency: Infinity,
   })
 }

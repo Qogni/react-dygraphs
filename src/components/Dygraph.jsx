@@ -17,7 +17,7 @@ class InteractionModelProxy {
         configurable: false,
         enumerable: true,
         get: () => this._target[prop],
-        set: value => this._target[prop] = value
+        set: value => (this._target[prop] = value),
       })
     })
   }
@@ -30,10 +30,6 @@ export default class Dygraph extends React.Component {
 
   static propTypes = Object.assign({style: PropTypes.object}, dygraphPropTypes)
 
-  constructor (props) {
-    super(props)
-  }
-
   componentDidMount () {
     const {known: initAttrs} = spreadKnownProps(this.props, true)
     this._interactionProxy._target =
@@ -42,7 +38,7 @@ export default class Dygraph extends React.Component {
     this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs)
   }
 
-  componentWillUpdate (nextProps/*, nextState*/) {
+  componentWillUpdate (nextProps) {
     if (this._dygraph) {
       const {known: updateAttrs} = spreadKnownProps(nextProps, false)
       this._interactionProxy._target =
@@ -64,7 +60,7 @@ export default class Dygraph extends React.Component {
   render () {
     return (
       <div
-        ref={(root) => this.root = root}
+        ref={(root) => (this.root = root)}
         style={this.props.style}
       />
     )
