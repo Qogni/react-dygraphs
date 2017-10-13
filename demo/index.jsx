@@ -12,7 +12,7 @@ class DygraphDemo extends React.Component {
   state = {
     zoom: null,
     clicked: null,
-    data: [[1, 10, 100], [2, 20, 80], [3, 50, 60], [4, 70, 80]]
+    data: [[1, 10, 100], [2, 20, 80], [3, 50, 60], [4, 70, 80]],
   }
 
   handleZoom = (min, max, yranges) => {

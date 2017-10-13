@@ -1,7 +1,7 @@
 /* eslint-disable import/no-duplicates */
 
-import ModuleDefaultComponent from '../src'
-import { Dygraph } from '../src'
+import ModuleDefaultComponent from '../src/index.js'
+import { Dygraph } from '../src/index.js'
 
 describe('module entry point', function () {
   it('should be a function', function () {
@@ -11,11 +11,3 @@ describe('module entry point', function () {
     expect(ModuleDefaultComponent).to.equal(Dygraph)
   })
 })
-
-const testsContext = require.context('./specs/', true, /\.jsx?$/)
-
-testsContext.keys().forEach(testsContext)
-
-const componentsContext = require.context('../src/components/', true, /\.jsx?$/)
-
-componentsContext.keys().forEach(componentsContext)

@@ -1,31 +1,34 @@
 /* eslint-env node */
 
-var path = require('path')
-
 module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'sinon-chai'],
     files: [
       'test/index.js',
+      { pattern: 'test/specs/**' },
     ],
     exclude: [],
     preprocessors: {
-      'test/index.js': ['webpack', 'sourcemap'],
+      'test/**': ['rollup', 'sourcemap'],
     },
-    webpack: {
-      module: {
-        rules: [{
-          test: /\.jsx?$/,
-          enforce: 'pre',
-          exclude: path.resolve('node_modules/'),
-          loader: 'babel-loader',
-        }],
-      },
-      resolve: {
-        extensions: ['.js', '.json', '.jsx'],
-      },
-      devtool: 'inline-source-map',
+    rollupPreprocessor: {
+      plugins: [
+        require('rollup-plugin-node-resolve')({
+          jsnext: true,
+          main: true,
+        }),
+        require('rollup-plugin-commonjs')(),
+        require('rollup-plugin-replace')({
+          'process.env.NODE_ENV': JSON.stringify('development'),
+        }),
+        require('rollup-plugin-babel')({
+          exclude: 'node_modules/**',
+        }),
+      ],
+      format: 'iife',
+      name: 'reactdygraphs',
+      sourcemap: 'inline',
     },
     coverageReporter: {
       type: 'lcov',
