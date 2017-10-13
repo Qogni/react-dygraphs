@@ -1,11 +1,20 @@
 {
-  "presets": [
-    "es2015",
-    "react",
-    "stage-0"
-  ],
   "plugins": [
-    "transform-object-assign"
+    "transform-class-properties"
+  ],
+  "presets": [
+    [
+      "env", {
+      "debug": true,
+      "modules": false,
+      "targets": {
+        "chrome": 59,
+        "firefox": 54,
+        "edge": 14,
+        "safari": 11
+      }
+    }],
+    "react"
   ],
   "env": {
     "test": {
