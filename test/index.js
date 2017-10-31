@@ -1,7 +1,4 @@
-/* eslint-disable import/no-duplicates */
-
-import ModuleDefaultComponent from '../src/index.js'
-import { Dygraph } from '../src/index.js'
+import ModuleDefaultComponent, { Dygraph } from '../src/index.js'
 
 describe('module entry point', function () {
   it('should be a function', function () {

@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* eslint import/no-nodejs-modules: 0 import/no-commonjs: 0 */
 
 module.exports = function (config) {
   config.set({
