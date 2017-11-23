@@ -1,4 +1,4 @@
-import ModuleDefaultComponent, { Dygraph } from '../src/index.js'
+import ModuleDefaultComponent, { Dygraph } from '../src'
 
 describe('module entry point', function () {
   it('should be a function', function () {

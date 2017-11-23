@@ -1,6 +1,6 @@
 {
   "name": "react-dygraphs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/cjs/index.js",
   "jsnext:main": "dist/es/index.js",
@@ -27,6 +27,7 @@
     "babel-eslint": "^8.0.1",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
@@ -73,10 +74,8 @@
   },
   "peerDependencies": {
     "dygraphs": "^2.0.0",
+    "prop-types": "^15.6.0",
     "react": "15.x || 16.x",
     "react-dom": "15.x || 16.x"
-  },
-  "dependencies": {
-    "prop-types": "^15.6.0"
   }
 }
