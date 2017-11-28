@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import DygraphBase from 'dygraphs'
 import { propTypes as dygraphPropTypes, spreadProps as spreadKnownProps } from './Dygraph/options'
 import FixedYAxis from '../plugins/FixedYAxis'
+import Normalize from '../plugins/Normalize'
 
 class InteractionModelProxy {
   constructor () {
@@ -31,6 +32,10 @@ export default class Dygraph extends React.Component {
 
   static propTypes = {
     fixedYAxis: PropTypes.bool,
+    normalize: PropTypes.shape({
+      notches: PropTypes.number,
+      ranges: PropTypes.arrayOf(PropTypes.array).isRequired,
+    }),
     style: PropTypes.object,
     ...dygraphPropTypes,
   }
@@ -40,12 +45,18 @@ export default class Dygraph extends React.Component {
     this._interactionProxy._target =
       initAttrs.interactionModel || DygraphBase.defaultInteractionModel
     initAttrs.interactionModel = this._interactionProxy
-    if (this.props.fixedYAxis) {
+    if (this.props.fixedYAxis || this.props.normalize) {
       if (!initAttrs.plugins) {
         initAttrs.plugins = []
       }
 
-      initAttrs.plugins.push(new FixedYAxis())
+      if (this.props.normalize) {
+        initAttrs.plugins.push(new Normalize(this.props.normalize))
+      }
+
+      if (this.props.fixedYAxis) {
+        initAttrs.plugins.push(new FixedYAxis())
+      }
     }
     this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs)
   }
