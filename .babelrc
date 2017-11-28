@@ -3,24 +3,56 @@
     "transform-class-properties",
     ["transform-object-rest-spread", { "useBuiltIns": true }]
   ],
-  "presets": [
-    [
-      "env", {
-      "debug": true,
-      "modules": false,
-      "targets": {
-        "chrome": 59,
-        "firefox": 54,
-        "edge": 14,
-        "safari": 11
-      }
-    }],
-    "react"
-  ],
   "env": {
     "test": {
       "plugins": [
         "istanbul"
+      ],
+      "presets": [
+        [
+          "env", {
+          "debug": true,
+          "modules": false,
+          "targets": {
+            "chrome": 59,
+            "firefox": 54,
+            "edge": 14,
+            "safari": 11
+          }
+        }],
+        "react"
+      ]
+    },
+    "es": {
+      "presets": [
+        [
+          "env", {
+          "debug": true,
+          "modules": false,
+          "targets": {
+            "chrome": 59,
+            "firefox": 54,
+            "edge": 14,
+            "safari": 11
+          }
+        }],
+        "react"
+      ]
+    },
+    "cjs": {
+      "presets": [
+        [
+          "env", {
+          "debug": true,
+          "modules": "commonjs",
+          "targets": {
+            "chrome": 59,
+            "firefox": 54,
+            "edge": 14,
+            "safari": 11
+          }
+        }],
+        "react"
       ]
     }
   }
