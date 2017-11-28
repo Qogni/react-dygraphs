@@ -25,10 +25,11 @@ export default class Normalize {
       let min = ranges[seriesIndex - 1][0]
       let max = ranges[seriesIndex - 1][1]
       let newSeries = []
+      let ratio = 100 / (max - min)
 
       for (let i = 0; i < rawData.length; i++) {
         newSeries.push([
-          rawData[i][0], (((rawData[i][1] - min) * 100) / (max - min)),
+          rawData[i][0], (rawData[i][1] - min) * ratio,
         ])
       }
 
