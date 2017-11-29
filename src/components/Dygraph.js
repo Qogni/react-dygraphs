@@ -33,7 +33,7 @@ export default class Dygraph extends React.Component {
 
   static propTypes = {
     fixedYAxis: PropTypes.bool,
-    downsample: PropTypes.oneOf([
+    downsample: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.shape({
         visibleThreshold: PropTypes.number,
