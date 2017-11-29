@@ -4,6 +4,7 @@ import DygraphBase from 'dygraphs'
 import { propTypes as dygraphPropTypes, spreadProps as spreadKnownProps } from './Dygraph/options'
 import FixedYAxis from '../plugins/FixedYAxis'
 import Normalize from '../plugins/Normalize'
+import Downsample from '../plugins/Downsample'
 
 class InteractionModelProxy {
   constructor () {
@@ -32,6 +33,13 @@ export default class Dygraph extends React.Component {
 
   static propTypes = {
     fixedYAxis: PropTypes.bool,
+    downsample: PropTypes.oneOf([
+      PropTypes.bool,
+      PropTypes.shape({
+        visibleThreshold: PropTypes.number,
+        invisibleThreshold: PropTypes.number,
+      }),
+    ]),
     normalize: PropTypes.shape({
       notches: PropTypes.number,
       ranges: PropTypes.arrayOf(PropTypes.array).isRequired,
@@ -52,6 +60,16 @@ export default class Dygraph extends React.Component {
 
       if (this.props.normalize) {
         initAttrs.plugins.push(new Normalize(this.props.normalize))
+      }
+
+      if (this.props.downsample) {
+        let options = this.props.downsample
+
+        if (typeof this.props.downsample === 'boolean') {
+          options = null
+        }
+
+        initAttrs.plugins.push(new Downsample(options))
       }
 
       if (this.props.fixedYAxis) {
