@@ -53,29 +53,29 @@ export default class Dygraph extends React.Component {
     this._interactionProxy._target =
       initAttrs.interactionModel || DygraphBase.defaultInteractionModel
     initAttrs.interactionModel = this._interactionProxy
-    if (this.props.fixedYAxis || this.props.normalize) {
-      if (!initAttrs.plugins) {
-        initAttrs.plugins = []
-      }
 
-      if (this.props.normalize) {
-        initAttrs.plugins.push(new Normalize(this.props.normalize))
-      }
-
-      if (this.props.downsample) {
-        let options = this.props.downsample
-
-        if (typeof this.props.downsample === 'boolean') {
-          options = null
-        }
-
-        initAttrs.plugins.push(new Downsample(options))
-      }
-
-      if (this.props.fixedYAxis) {
-        initAttrs.plugins.push(new FixedYAxis())
-      }
+    if (!initAttrs.plugins) {
+      initAttrs.plugins = []
     }
+
+    if (this.props.normalize) {
+      initAttrs.plugins.push(new Normalize(this.props.normalize))
+    }
+
+    if (this.props.downsample) {
+      let options = this.props.downsample
+
+      if (typeof this.props.downsample === 'boolean') {
+        options = null
+      }
+
+      initAttrs.plugins.push(new Downsample(options))
+    }
+
+    if (this.props.fixedYAxis) {
+      initAttrs.plugins.push(new FixedYAxis())
+    }
+
     this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs)
   }
 
