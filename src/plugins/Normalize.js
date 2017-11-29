@@ -14,36 +14,46 @@ export default class Normalize {
     const ranges = this.ranges
 
     const rangeMap = dygraph.getOption('labels').slice(1).reduce((a, l, i) => {
-      let min = ranges[i][0]
-      let max = ranges[i][1]
-      let mod = (max - min) / 100
+      const min = ranges[i][0]
+      const max = ranges[i][1]
+      const normalizeRatio = 100 / (max - min)
+      const formatRatio = (max - min) / 100
 
-      return { [l]: (y) => (y * mod) + min, ...a }
+      return {
+        [l]: {
+          normalize: (y) => ((y - min) * normalizeRatio),
+          formatValue: (y) => (y * formatRatio) + min,
+        },
+        ...a,
+      }
     }, {})
 
-    const extractSeries = (rawData, seriesIndex, options) => {
-      let min = ranges[seriesIndex - 1][0]
-      let max = ranges[seriesIndex - 1][1]
-      let newSeries = []
-      let ratio = 100 / (max - min)
+    const seriesToPoints = function (series, setName, boundaryIdStart) {
+      const points = []
 
-      for (let i = 0; i < rawData.length; i++) {
-        newSeries.push([
-          rawData[i][0], (rawData[i][1] - min) * ratio,
-        ])
+      for (let i = 0; i < series.length; ++i) {
+        points.push({
+          x: NaN,
+          y: NaN,
+          xval: series[i][0] === null ? null : series[i][0],
+          yval: series[i][1] === null ? null : rangeMap[setName].normalize(series[i][1]),
+          name: setName, // TODO(danvk): is this really necessary?
+          idx: i + boundaryIdStart,
+        })
       }
 
-      return newSeries
+      this.onPointsCreated_(series, points)
+      return points
     }
 
     const axes = dygraph.getOption('axes')
 
     axes.y.valueFormatter = (y, opts, seriesName) => {
-      return rangeMap[seriesName](y)
+      return rangeMap[seriesName].formatValue(y)
     }
 
     axes.y.ticker = () => [...Array(this.notches + 1).keys()].map(n => {
-      let value = (n / this.notches) * 100
+      const value = (n / this.notches) * 100
 
       return {
         v: value,
@@ -53,7 +63,7 @@ export default class Normalize {
 
     dygraph.updateOptions({ axes, valueRange: [0, 100] }, true)
 
-    const predraw = (e) => { e.dygraph.dataHandler_.extractSeries = extractSeries }
+    const predraw = (e) => { e.dygraph.dataHandler_.seriesToPoints = seriesToPoints.bind(e.dygraph.dataHandler_) }
 
     return { predraw }
   }
