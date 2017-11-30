@@ -42,7 +42,7 @@ export default class Dygraph extends React.Component {
     ]),
     normalize: PropTypes.shape({
       notches: PropTypes.number,
-      ranges: PropTypes.arrayOf(PropTypes.array).isRequired,
+      ranges: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
     }),
     style: PropTypes.object,
     ...dygraphPropTypes,
@@ -85,6 +85,11 @@ export default class Dygraph extends React.Component {
       this._interactionProxy._target =
         updateAttrs.interactionModel || DygraphBase.defaultInteractionModel
       updateAttrs.interactionModel = this._interactionProxy
+
+      if (nextProps.normalize && nextProps.normalize !== this.props.normalize) {
+        this._dygraph.plugins_.find(p => p.plugin instanceof Normalize).plugin.updateOptions(nextProps.normalize)
+      }
+
       this._dygraph.updateOptions(updateAttrs)
     }
   }

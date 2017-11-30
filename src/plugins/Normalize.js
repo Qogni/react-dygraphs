@@ -1,5 +1,27 @@
+const getRangeMap = (dygraph, ranges) => dygraph.getOption('labels').slice(1).reduce((a, l, i) => {
+  const min = +ranges[i][0]
+  const max = +ranges[i][1]
+  const normalizeRatio = 100 / (max - min)
+  const formatRatio = (max - min) / 100
+
+  return {
+    [l]: {
+      normalize: (y) => ((y - min) * normalizeRatio),
+      formatValue: (y) => (y * formatRatio) + min,
+    },
+    ...a,
+  }
+}, {})
+
 export default class Normalize {
   constructor (options) {
+    this.activate.bind(this)
+    this.updateOptions.bind(this)
+
+    this.updateOptions(options)
+  }
+
+  updateOptions (options) {
     if (typeof options !== 'object' || options.ranges === undefined) {
       throw new Error('Normalize ranges must be provided')
     }
@@ -7,26 +29,19 @@ export default class Normalize {
     this.notches = options.notches ? options.notches : 4
     this.ranges = options.ranges
 
-    this.activate.bind(this)
+    if (this.dygraph) {
+      this.updateRangeMap()
+    }
+  }
+
+  updateRangeMap () {
+    this.rangeMap = this.rangeMap = getRangeMap(this.dygraph, this.ranges)
   }
 
   activate (dygraph) {
-    const ranges = this.ranges
-
-    const rangeMap = dygraph.getOption('labels').slice(1).reduce((a, l, i) => {
-      const min = ranges[i][0]
-      const max = ranges[i][1]
-      const normalizeRatio = 100 / (max - min)
-      const formatRatio = (max - min) / 100
-
-      return {
-        [l]: {
-          normalize: (y) => ((y - min) * normalizeRatio),
-          formatValue: (y) => (y * formatRatio) + min,
-        },
-        ...a,
-      }
-    }, {})
+    this.dygraph = dygraph
+    this.updateRangeMap()
+    const $this = this
 
     const seriesToPoints = function (series, setName, boundaryIdStart) {
       const points = []
@@ -36,7 +51,7 @@ export default class Normalize {
           x: NaN,
           y: NaN,
           xval: series[i][0] === null ? null : series[i][0],
-          yval: series[i][1] === null ? null : rangeMap[setName].normalize(series[i][1]),
+          yval: series[i][1] === null ? null : $this.rangeMap[setName].normalize(series[i][1]),
           name: setName, // TODO(danvk): is this really necessary?
           idx: i + boundaryIdStart,
         })
@@ -49,7 +64,7 @@ export default class Normalize {
     const axes = dygraph.getOption('axes')
 
     axes.y.valueFormatter = (y, opts, seriesName) => {
-      return rangeMap[seriesName].formatValue(y)
+      return $this.rangeMap[seriesName].formatValue(y)
     }
 
     axes.y.ticker = () => [...Array(this.notches + 1).keys()].map(n => {
