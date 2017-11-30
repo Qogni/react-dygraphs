@@ -48,24 +48,29 @@ export default class Downsample {
 
     const extractSeries = (rawData, seriesIndex, options) => {
       let newData = []
+      const series = []
 
-      let leftBoundary = rawData.findIndex(data => data[0] >= from)
-      let rightBoundary = rawData.findIndex(data => data[0] >= to)
+      for (let i = 0; i < rawData.length; i++) {
+        series.push([rawData[i][0], rawData[i][seriesIndex]])
+      }
+
+      let leftBoundary = series.findIndex(data => data[0] >= from)
+      let rightBoundary = series.findIndex(data => data[0] >= to)
 
       if (leftBoundary > 0) {
         newData = newData.concat(
-          Downsampler.processData(rawData.slice(0, leftBoundary), this.invisibleThreshold)
+          Downsampler.processData(series.slice(0, leftBoundary), this.invisibleThreshold)
         )
       }
 
       newData = newData.concat(
-        Downsampler.processData(rawData.slice(leftBoundary, rightBoundary), this.visibleThreshold)
+        Downsampler.processData(series.slice(leftBoundary, rightBoundary), this.visibleThreshold)
       )
 
-      if (rightBoundary < rawData.length) {
+      if (rightBoundary < series.length) {
         newData = newData.concat(
           Downsampler.processData(
-            rawData.slice(rightBoundary), this.invisibleThreshold
+            series.slice(rightBoundary), this.invisibleThreshold
           )
         )
       }
