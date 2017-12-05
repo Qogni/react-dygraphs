@@ -85,8 +85,7 @@ export default class Dygraph extends React.Component {
     }
 
     if (this.props.stickyEdges) {
-      let stickyOptions = this.props.stickyEdges === true ? { right: true, left: true } : this.props.stickyEdges
-      initAttrs.plugins.push(new StickyEdges(stickyOptions))
+      initAttrs.plugins.push(new StickyEdges(this.props.stickyEdges))
     }
 
     this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs)

@@ -6,9 +6,16 @@ export default class StickyEdges {
     this.updateOptions(arguments[0])
   }
 
-  updateOptions ({ right = true, left = false } = {}) {
-    this.stickyRight = right
-    this.stickyLeft = left
+  updateOptions (options) {
+    if (typeof options === 'boolean') {
+      this.stickyRight = options
+      this.stickyLeft = options
+    } else if (typeof options === 'object') {
+      this.stickyRight = !!options.right
+      this.stickyLeft = !!options.left
+    } else {
+      throw new Error('Invalid options for StickyEdges plugin')
+    }
   }
 
   activate (dygraph) {
