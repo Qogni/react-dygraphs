@@ -1,9 +1,13 @@
 export default class StickyEdges {
   constructor ({ right = true, left = false } = {}) {
-    this.stickyRight = right
-    this.stickyLeft = left
+    this.updateOptions.bind(arguments[0])
 
     this.activate.bind(this)
+  }
+
+  updateOptions ({ right = true, left = false } = {}) {
+    this.stickyRight = right
+    this.stickyLeft = left
   }
 
   activate (dygraph) {

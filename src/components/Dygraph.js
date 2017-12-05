@@ -5,6 +5,7 @@ import { propTypes as dygraphPropTypes, spreadProps as spreadKnownProps } from '
 import FixedYAxis from '../plugins/FixedYAxis'
 import Normalize from '../plugins/Normalize'
 import Downsample from '../plugins/Downsample'
+import StickyEdges from '../plugins/StickyEdges'
 
 class InteractionModelProxy {
   constructor () {
@@ -44,6 +45,13 @@ export default class Dygraph extends React.Component {
       notches: PropTypes.number,
       ranges: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
     }),
+    stickyEdges: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.shape({
+        left: PropTypes.bool,
+        right: PropTypes.bool,
+      }),
+    ]),
     style: PropTypes.object,
     ...dygraphPropTypes,
   }
@@ -63,17 +71,22 @@ export default class Dygraph extends React.Component {
     }
 
     if (this.props.downsample) {
-      let options = this.props.downsample
+      let normalizeOPtions = this.props.downsample
 
       if (typeof this.props.downsample === 'boolean') {
-        options = null
+        normalizeOPtions = null
       }
 
-      initAttrs.plugins.push(new Downsample(options))
+      initAttrs.plugins.push(new Downsample(normalizeOPtions))
     }
 
     if (this.props.fixedYAxis) {
       initAttrs.plugins.push(new FixedYAxis())
+    }
+
+    if (this.props.stickyEdges) {
+      let stickyOptions = this.props.stickyEdges === true ? { right: true, left: true } : this.props.stickyEdges
+      initAttrs.plugins.push(new StickyEdges(stickyOptions))
     }
 
     this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs)
@@ -88,6 +101,10 @@ export default class Dygraph extends React.Component {
 
       if (nextProps.normalize && nextProps.normalize !== this.props.normalize) {
         this._dygraph.plugins_.find(p => p.plugin instanceof Normalize).plugin.updateOptions(nextProps.normalize)
+      }
+
+      if (nextProps.stickyEdges && nextProps.stickyEdges !== this.props.stickyEdges) {
+        this._dygraph.plugins_.find(p => p.plugin instanceof StickyEdges).plugin.updateOptions(nextProps.stickyEdges)
       }
 
       this._dygraph.updateOptions(updateAttrs)
