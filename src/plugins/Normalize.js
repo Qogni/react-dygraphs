@@ -15,8 +15,8 @@ const getRangeMap = (dygraph, ranges) => dygraph.getOption('labels').slice(1).re
 
 export default class Normalize {
   constructor (options) {
-    this.activate.bind(this)
-    this.updateOptions.bind(this)
+    this.activate = this.activate.bind(this)
+    this.updateOptions = this.updateOptions.bind(this)
 
     this.updateOptions(options)
   }

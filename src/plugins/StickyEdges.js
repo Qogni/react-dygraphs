@@ -1,8 +1,9 @@
 export default class StickyEdges {
   constructor ({ right = true, left = false } = {}) {
-    this.updateOptions.bind(arguments[0])
-
+    this.updateOptions = this.updateOptions.bind(this)
     this.activate.bind(this)
+
+    this.updateOptions(arguments[0])
   }
 
   updateOptions ({ right = true, left = false } = {}) {

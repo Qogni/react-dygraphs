@@ -23,8 +23,11 @@ export default class Downsample {
       }
     }
 
-    this.activate.bind(this)
-    this.destroy.bind(this)
+    this.mousedownHandler = this.mousedownHandler.bind(this)
+    this.mouseupHandler = this.mouseupHandler.bind(this)
+    this.rangeSelectorHandler = this.rangeSelectorHandler.bind(this)
+    this.activate = this.activate.bind(this)
+    this.destroy = this.destroy.bind(this)
   }
 
   mousedownHandler (e) {
@@ -81,12 +84,12 @@ export default class Downsample {
     this.dygraph = dygraph
 
     this.events = [
-      [dygraph.maindiv_, 'mousedown', this.mousedownHandler.bind(this)],
-      [window, 'mouseup', this.mouseupHandler.bind(this)],
+      [dygraph.maindiv_, 'mousedown', this.mousedownHandler],
+      [window, 'mouseup', this.mouseupHandler],
     ]
 
     if (dygraph.getBooleanOption('showRangeSelector')) {
-      this.events.push([getRangeSelectorCanvas(this.dygraph), 'mousedown', this.rangeSelectorHandler.bind(this)])
+      this.events.push([getRangeSelectorCanvas(this.dygraph), 'mousedown', this.rangeSelectorHandler])
     }
 
     this.events.map(e => addEvent(...e))
