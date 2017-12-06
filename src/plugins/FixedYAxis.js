@@ -1,4 +1,8 @@
 export default class FixedYAxis {
+  static toString = () => {
+    return 'FixedYAxis Plugin'
+  }
+
   activate (dygraph) {
     const valueRange = dygraph.getOption('valueRange')
 
@@ -15,8 +19,4 @@ export default class FixedYAxis {
     // Must override dataHandler.getExtremeYValues every predraw
     return { predraw }
   }
-}
-
-FixedYAxis.toString = () => {
-  return 'FixedYAxis Plugin'
 }

@@ -7,6 +7,10 @@ const getRangeSelectorCanvas = dygraph => {
 }
 
 export default class Downsample {
+  static toString = () => {
+    return 'Downsample Plugin'
+  }
+
   constructor (options) {
     this.visibleThreshold = Infinity
     this.invisibleThreshold = 100
@@ -22,30 +26,24 @@ export default class Downsample {
         this.invisibleThreshold = options.invisibleThreshold
       }
     }
-
-    this.mousedownHandler = this.mousedownHandler.bind(this)
-    this.mouseupHandler = this.mouseupHandler.bind(this)
-    this.rangeSelectorHandler = this.rangeSelectorHandler.bind(this)
-    this.activate = this.activate.bind(this)
-    this.destroy = this.destroy.bind(this)
   }
 
-  mousedownHandler (e) {
+  mousedownHandler = (e) => {
     this.mousedown = true
   }
 
-  mouseupHandler (e) {
+  mouseupHandler = (e) => {
     if (this.mousedown) {
       this.dygraph.updateOptions({file: this.dygraph.file_}, false)
       this.mousedown = false
     }
   }
 
-  rangeSelectorHandler (e) {
+  rangeSelectorHandler = (e) => {
     this.mousedown = true
   }
 
-  activate (dygraph) {
+  activate = (dygraph) => {
     let from
     let to
 
@@ -103,11 +101,7 @@ export default class Downsample {
     return { predraw }
   }
 
-  destroy (e) {
+  destroy = (e) => {
     this.events.map(e => removeEvent(...e))
   }
-}
-
-Downsample.toString = () => {
-  return 'Downsample Plugin'
 }

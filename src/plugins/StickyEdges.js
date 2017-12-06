@@ -1,12 +1,13 @@
 export default class StickyEdges {
-  constructor ({ right = true, left = false } = {}) {
-    this.updateOptions = this.updateOptions.bind(this)
-    this.activate.bind(this)
+  static toString = () => {
+    return 'StickyEdges Plugin'
+  }
 
+  constructor ({ right = true, left = false } = {}) {
     this.updateOptions(arguments[0])
   }
 
-  updateOptions (options) {
+  updateOptions = (options) => {
     if (typeof options === 'boolean') {
       this.stickyRight = options
       this.stickyLeft = options
@@ -18,7 +19,7 @@ export default class StickyEdges {
     }
   }
 
-  activate (dygraph) {
+  activate = (dygraph) => {
     let stickyRight = this.stickyRight
     let stickyLeft = this.stickyLeft
 
@@ -56,8 +57,4 @@ export default class StickyEdges {
 
     return { dataWillUpdate, predraw }
   }
-}
-
-StickyEdges.toString = () => {
-  return 'StickyEdges Plugin'
 }

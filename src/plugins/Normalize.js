@@ -14,14 +14,15 @@ const getRangeMap = (dygraph, ranges) => dygraph.getOption('labels').slice(1).re
 }, {})
 
 export default class Normalize {
-  constructor (options) {
-    this.activate = this.activate.bind(this)
-    this.updateOptions = this.updateOptions.bind(this)
+  static toString = () => {
+    return 'Normalize Plugin'
+  }
 
+  constructor (options) {
     this.updateOptions(options)
   }
 
-  updateOptions (options) {
+  updateOptions = (options) => {
     if (typeof options !== 'object' || options.ranges === undefined) {
       throw new Error('Normalize ranges must be provided')
     }
@@ -34,11 +35,11 @@ export default class Normalize {
     }
   }
 
-  updateRangeMap () {
-    this.rangeMap = this.rangeMap = getRangeMap(this.dygraph, this.ranges)
+  updateRangeMap = () => {
+    this.rangeMap = getRangeMap(this.dygraph, this.ranges)
   }
 
-  activate (dygraph) {
+  activate = (dygraph) => {
     this.dygraph = dygraph
     this.updateRangeMap()
     const $this = this
@@ -82,8 +83,4 @@ export default class Normalize {
 
     return { predraw }
   }
-}
-
-Normalize.toString = () => {
-  return 'Normalize Plugin'
 }
