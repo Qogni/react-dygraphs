@@ -6,6 +6,7 @@ import FixedYAxis from '../plugins/FixedYAxis'
 import Normalize from '../plugins/Normalize'
 import Downsample from '../plugins/Downsample'
 import StickyEdges from '../plugins/StickyEdges'
+import OptimizedDataHandler from '../datahandler/Optimized'
 
 class InteractionModelProxy {
   constructor () {
@@ -61,6 +62,10 @@ export default class Dygraph extends React.Component {
     this._interactionProxy._target =
       initAttrs.interactionModel || DygraphBase.defaultInteractionModel
     initAttrs.interactionModel = this._interactionProxy
+
+    if (!initAttrs.dataHandler) {
+      initAttrs.dataHandler = OptimizedDataHandler
+    }
 
     if (!initAttrs.plugins) {
       initAttrs.plugins = []

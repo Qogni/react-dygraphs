@@ -55,6 +55,8 @@ export default class Normalize {
           yval: series[i][1] === null ? null : $this.rangeMap[setName].normalize(series[i][1]),
           name: setName, // TODO(danvk): is this really necessary?
           idx: i + boundaryIdStart,
+          canvasx: NaN,
+          canvasy: NaN,
         })
       }
 
