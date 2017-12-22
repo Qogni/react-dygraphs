@@ -1,4 +1,11 @@
-import ModuleDefaultComponent, { Dygraph, FixedYAxis, Normalize, Downsample, StickyEdges } from '../src'
+import ModuleDefaultComponent, {
+  Dygraph,
+  ChartBorder,
+  FixedYAxis,
+  Normalize,
+  Downsample,
+  StickyEdges
+} from '../src'
 
 describe('module entry point', () => {
   it('should be a function', () => {
@@ -12,6 +19,9 @@ describe('module entry point', () => {
 })
 
 describe('Plugins entry points', () => {
+  it('ChartBorder should be a function', () => {
+    expect(ChartBorder).to.be.a('function')
+  })
   it('FixedYAxis should be a function', () => {
     expect(FixedYAxis).to.be.a('function')
   })
