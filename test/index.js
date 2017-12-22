@@ -4,14 +4,13 @@ import ModuleDefaultComponent, {
   FixedYAxis,
   Normalize,
   Downsample,
-  StickyEdges
+  StickyEdges,
 } from '../src'
 
 describe('module entry point', () => {
   it('should be a function', () => {
     expect(ModuleDefaultComponent).to.be.a('function')
   })
-
 
   it('should be Dygraph', () => {
     expect(ModuleDefaultComponent).to.equal(Dygraph)
