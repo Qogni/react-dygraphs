@@ -14,9 +14,9 @@
           "debug": true,
           "modules": false,
           "targets": {
-            "chrome": 59,
-            "firefox": 54,
-            "edge": 14,
+            "chrome": 62,
+            "firefox": 57,
+            "edge": 15,
             "safari": 11
           }
         }],
@@ -30,9 +30,9 @@
           "debug": true,
           "modules": false,
           "targets": {
-            "chrome": 59,
-            "firefox": 54,
-            "edge": 14,
+            "chrome": 62,
+            "firefox": 57,
+            "edge": 15,
             "safari": 11
           }
         }],
@@ -46,9 +46,9 @@
           "debug": true,
           "modules": "commonjs",
           "targets": {
-            "chrome": 59,
-            "firefox": 54,
-            "edge": 14,
+            "chrome": 62,
+            "firefox": 57,
+            "edge": 15,
             "safari": 11
           }
         }],
