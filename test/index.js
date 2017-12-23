@@ -1,5 +1,6 @@
 import ModuleDefaultComponent, {
   Dygraph,
+  ChartBackground,
   ChartBorder,
   FixedYAxis,
   Normalize,
@@ -18,6 +19,9 @@ describe('module entry point', () => {
 })
 
 describe('Plugins entry points', () => {
+  it('ChartBackground should be a function', () => {
+    expect(ChartBackground).to.be.a('function')
+  })
   it('ChartBorder should be a function', () => {
     expect(ChartBorder).to.be.a('function')
   })
