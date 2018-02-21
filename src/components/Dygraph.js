@@ -9,7 +9,11 @@ import Normalize from '../plugins/Normalize'
 import Downsample from '../plugins/Downsample'
 import StickyEdges from '../plugins/StickyEdges'
 import DateTickerWorkaround from '../plugins/DateTickerWorkaround'
+import SupressEmptyDataError from '../plugins/SupressEmptyDataError'
+import NoWarningRangeSelector from '../plugins/NoWarningRangeSelector'
 import OptimizedDataHandler from '../datahandler/Optimized'
+
+DygraphBase.PLUGINS[DygraphBase.PLUGINS.indexOf(DygraphBase.Plugins.RangeSelector)] = NoWarningRangeSelector
 
 class InteractionModelProxy {
   constructor () {
@@ -79,6 +83,7 @@ export default class Dygraph extends React.Component {
       initAttrs.plugins = []
     }
 
+    initAttrs.plugins.push(new SupressEmptyDataError())
     initAttrs.plugins.push(new DateTickerWorkaround())
 
     if (this.props.chartBorder) {
