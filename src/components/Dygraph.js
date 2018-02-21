@@ -8,6 +8,7 @@ import FixedYAxis from '../plugins/FixedYAxis'
 import Normalize from '../plugins/Normalize'
 import Downsample from '../plugins/Downsample'
 import StickyEdges from '../plugins/StickyEdges'
+import DateTickerWorkaround from '../plugins/DateTickerWorkaround'
 import OptimizedDataHandler from '../datahandler/Optimized'
 
 class InteractionModelProxy {
@@ -77,6 +78,8 @@ export default class Dygraph extends React.Component {
     if (!initAttrs.plugins) {
       initAttrs.plugins = []
     }
+
+    initAttrs.plugins.push(new DateTickerWorkaround())
 
     if (this.props.chartBorder) {
       initAttrs.plugins.push(new ChartBorder())

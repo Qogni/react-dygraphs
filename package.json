@@ -37,7 +37,7 @@
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
     "cross-env": "^5.1.1",
-    "dygraphs": "^2.0.0",
+    "dygraphs": "^2.1.0",
     "eclint": "^2.4.3",
     "editorconfig-tools": "^0.1.1",
     "eslint": "^4.9.0",
@@ -74,7 +74,7 @@
     "email": "motiz88@gmail.com"
   },
   "peerDependencies": {
-    "dygraphs": "^2.0.0",
+    "dygraphs": "^2.1.0",
     "prop-types": "^15.6.0",
     "react": "15.x || 16.x",
     "react-dom": "15.x || 16.x"
