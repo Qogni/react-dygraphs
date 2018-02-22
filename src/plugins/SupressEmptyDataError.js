@@ -1,5 +1,3 @@
-import Dygraphs from 'dygraphs'
-
 export default class DateTickerWorkaround {
   static toString = () => {
     return 'SupressEmptyDataError Plugin'
