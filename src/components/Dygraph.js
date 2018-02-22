@@ -11,6 +11,7 @@ import StickyEdges from '../plugins/StickyEdges'
 import DateTickerWorkaround from '../plugins/DateTickerWorkaround'
 import SupressEmptyDataError from '../plugins/SupressEmptyDataError'
 import NoWarningRangeSelector from '../plugins/NoWarningRangeSelector'
+import VisibilityRedraw from '../plugins/VisibilityRedraw'
 import OptimizedDataHandler from '../datahandler/Optimized'
 
 DygraphBase.PLUGINS[DygraphBase.PLUGINS.indexOf(DygraphBase.Plugins.RangeSelector)] = NoWarningRangeSelector
@@ -85,6 +86,7 @@ export default class Dygraph extends React.Component {
 
     initAttrs.plugins.push(new SupressEmptyDataError())
     initAttrs.plugins.push(new DateTickerWorkaround())
+    initAttrs.plugins.push(new VisibilityRedraw())
 
     if (this.props.chartBorder) {
       initAttrs.plugins.push(new ChartBorder())
