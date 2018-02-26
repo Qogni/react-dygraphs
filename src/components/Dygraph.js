@@ -131,7 +131,11 @@ export default class Dygraph extends React.Component {
       enumerable: true,
       get() { return dateWindow },
       set(value) {
-        if (dateWindow === undefined || value[0] !== dateWindow[0] || value[1] !== dateWindow[1]) {
+        if (dateWindow === undefined ||
+          dateWindow === null ||
+          value[0] !== dateWindow[0] ||
+          value[1] !== dateWindow[1]
+        ) {
           dateWindow = value
           if (self.props.onDateWindowChanged) {
             self.props.onDateWindowChanged(value)
