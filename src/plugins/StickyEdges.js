@@ -33,13 +33,8 @@ export default class StickyEdges {
           e.dygraph.dateWindow_ = [min, max]
         }
 
-        if (this.stickyRight) {
-          shouldStickRight = e.dygraph.dateWindow_[1] === max
-        }
-
-        if (this.stickyLeft) {
-          shouldStickLeft = e.dygraph.dateWindow_[0] === min
-        }
+        shouldStickRight = this.stickyRight && e.dygraph.dateWindow_[1] === max
+        shouldStickLeft = this.stickyLeft && e.dygraph.dateWindow_[0] === min
       }
     }
 
