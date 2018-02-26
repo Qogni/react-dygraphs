@@ -27,7 +27,9 @@ export default class StickyEdges {
       if (e.dygraph.rawData_) {
         const [min, max] = e.dygraph.xAxisExtremes()
 
-        if (e.dygraph.dateWindow_ === undefined) {
+        if (e.dygraph.dateWindow_ === undefined ||
+          e.dygraph.dateWindow_ === null
+        ) {
           e.dygraph.dateWindow_ = [min, max]
         }
 
