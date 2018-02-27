@@ -7,8 +7,13 @@ export default class ChartBorder {
     const originalCallback = dygraph.getFunctionOption('underlayCallback')
 
     let underlayCallback = function (ctx, area, dygraph) {
+      ctx.beginPath()
       ctx.strokeStyle = 'black'
-      ctx.strokeRect(area.x, area.y, area.w, area.h)
+      ctx.moveTo(area.x, area.y)
+      ctx.lineTo(area.w, area.y)
+      ctx.moveTo(area.w, area.y)
+      ctx.lineTo(area.w, area.h)
+      ctx.stroke()
 
       if (originalCallback) {
         originalCallback.call(this, ctx, area, dygraph)
