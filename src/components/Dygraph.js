@@ -147,19 +147,19 @@ export default class Dygraph extends React.Component {
     })
   }
 
-  componentWillUpdate (nextProps) {
+  componentDidUpdate (prevProps) {
     if (this._dygraph) {
-      const {known: updateAttrs} = spreadKnownProps(nextProps, false)
+      const {known: updateAttrs} = spreadKnownProps(this.props, false)
       this._interactionProxy._target =
         updateAttrs.interactionModel || DygraphBase.defaultInteractionModel
       updateAttrs.interactionModel = this._interactionProxy
 
-      if (nextProps.normalize && nextProps.normalize !== this.props.normalize) {
-        this._dygraph.plugins_.find(p => p.plugin instanceof Normalize).plugin.updateOptions(nextProps.normalize)
+      if (this.props.normalize && this.props.normalize !== prevProps.normalize) {
+        this._dygraph.plugins_.find(p => p.plugin instanceof Normalize).plugin.updateOptions(this.props.normalize)
       }
 
-      if (nextProps.stickyEdges && nextProps.stickyEdges !== this.props.stickyEdges) {
-        this._dygraph.plugins_.find(p => p.plugin instanceof StickyEdges).plugin.updateOptions(nextProps.stickyEdges)
+      if (this.props.stickyEdges && this.props.stickyEdges !== prevProps.stickyEdges) {
+        this._dygraph.plugins_.find(p => p.plugin instanceof StickyEdges).plugin.updateOptions(this.props.stickyEdges)
       }
 
       this._dygraph.updateOptions(updateAttrs)
