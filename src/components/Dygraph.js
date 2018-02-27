@@ -38,7 +38,7 @@ class InteractionModelProxy {
   _target = DygraphBase.defaultInteractionModel
 }
 
-export default class Dygraph extends React.Component {
+export default class Dygraph extends React.PureComponent {
   displayName = 'Dygraph'
 
   static propTypes = {
