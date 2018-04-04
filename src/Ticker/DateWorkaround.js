@@ -135,7 +135,7 @@ export var getDateAxis = function (startTime, endTime, granularity, opts, dg) {
     }
     while (tickTime <= endTime) {
       if (granularity >= Granularity.DAILY ||
-        accessors.getHours(tickDate) % step === 0) {
+        utils.DateAccessorsUTC.getHours(tickDate) % step === 0) {
         ticks.push({ v: tickTime,
           label: formatter.call(dg, tickDate, granularity, opts, dg),
         })
