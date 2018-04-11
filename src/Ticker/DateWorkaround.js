@@ -91,13 +91,13 @@ export var getDateAxis = function (startTime, endTime, granularity, opts, dg) {
 
   const startDate = new Date(startTime)
   const dateArray = []
-  dateArray[DateField.DATEFIELD_Y] = utils.DateAccessorsUTC.getFullYear(startDate)
-  dateArray[DateField.DATEFIELD_M] = utils.DateAccessorsUTC.getMonth(startDate)
-  dateArray[DateField.DATEFIELD_D] = utils.DateAccessorsUTC.getDate(startDate)
-  dateArray[DateField.DATEFIELD_HH] = utils.DateAccessorsUTC.getHours(startDate)
-  dateArray[DateField.DATEFIELD_MM] = utils.DateAccessorsUTC.getMinutes(startDate)
-  dateArray[DateField.DATEFIELD_SS] = utils.DateAccessorsUTC.getSeconds(startDate)
-  dateArray[DateField.DATEFIELD_MS] = utils.DateAccessorsUTC.getMilliseconds(startDate)
+  dateArray[DateField.DATEFIELD_Y] = accessors.getFullYear(startDate)
+  dateArray[DateField.DATEFIELD_M] = accessors.getMonth(startDate)
+  dateArray[DateField.DATEFIELD_D] = accessors.getDate(startDate)
+  dateArray[DateField.DATEFIELD_HH] = accessors.getHours(startDate)
+  dateArray[DateField.DATEFIELD_MM] = accessors.getMinutes(startDate)
+  dateArray[DateField.DATEFIELD_SS] = accessors.getSeconds(startDate)
+  dateArray[DateField.DATEFIELD_MS] = accessors.getMilliseconds(startDate)
 
   let startDateOffset = dateArray[datefield] % step
   if (granularity === Granularity.WEEKLY) {
@@ -112,8 +112,13 @@ export var getDateAxis = function (startTime, endTime, granularity, opts, dg) {
   }
 
   const ticks = []
-  let tickDate = utils.DateAccessorsUTC.makeDate.apply(null, dateArray)
+  let tickDate = accessors.makeDate.apply(null, dateArray)
   let tickTime = tickDate.getTime()
+
+  if (tickTime < 0) {
+    tickDate = new Date(startTime)
+    tickTime = startTime
+  }
 
   if (granularity <= Granularity.HOURLY) {
     if (tickTime < startTime) {
@@ -130,18 +135,18 @@ export var getDateAxis = function (startTime, endTime, granularity, opts, dg) {
   } else {
     if (tickTime < startTime) {
       dateArray[datefield] += step
-      tickDate = utils.DateAccessorsUTC.makeDate.apply(null, dateArray)
+      tickDate = accessors.makeDate.apply(null, dateArray)
       tickTime = tickDate.getTime()
     }
     while (tickTime <= endTime) {
       if (granularity >= Granularity.DAILY ||
-        utils.DateAccessorsUTC.getHours(tickDate) % step === 0) {
+        accessors.getHours(tickDate) % step === 0) {
         ticks.push({ v: tickTime,
           label: formatter.call(dg, tickDate, granularity, opts, dg),
         })
       }
       dateArray[datefield] += step
-      tickDate = utils.DateAccessorsUTC.makeDate.apply(null, dateArray)
+      tickDate = accessors.makeDate.apply(null, dateArray)
       tickTime = tickDate.getTime()
     }
   }
