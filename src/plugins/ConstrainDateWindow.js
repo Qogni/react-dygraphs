@@ -3,13 +3,14 @@ export default class ConstrainDateWindow {
     return 'ConstrainDateWindow Plugin'
   }
 
-  constructor ({ constrainToData = true, minRangeWidth = 12 } = {}) {
-    this.updateOptions(arguments[0])
+  constructor (options = {}) {
+    options = { ...options, constrainToData: true, minRangeWidth: 12 }
+    this.updateOptions(options)
   }
 
   updateOptions = (options) => {
     if (typeof options === 'object') {
-      this.constrainToData = !!options.constrainToData
+      this.constrainToData = options.constrainToData
       this.minRangeWidth = options.minRangeWidth
     } else {
       throw new Error('Invalid options for ConstrainDateWindow plugin')
