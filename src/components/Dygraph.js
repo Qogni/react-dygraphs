@@ -12,6 +12,7 @@ import DateTickerWorkaround from '../plugins/DateTickerWorkaround'
 import SupressEmptyDataError from '../plugins/SupressEmptyDataError'
 import NoWarningRangeSelector from '../plugins/NoWarningRangeSelector'
 import VisibilityRedraw from '../plugins/VisibilityRedraw'
+import ConstrainDateWindow from '../plugins/ConstrainDateWindow'
 import OptimizedDataHandler from '../datahandler/Optimized'
 
 DygraphBase.PLUGINS[DygraphBase.PLUGINS.indexOf(DygraphBase.Plugins.RangeSelector)] = NoWarningRangeSelector
@@ -48,6 +49,7 @@ export default class Dygraph extends React.PureComponent {
       PropTypes.bool,
       PropTypes.string,
     ]),
+    constrainDateWindow: PropTypes.bool,
     downsample: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.shape({
@@ -121,6 +123,10 @@ export default class Dygraph extends React.PureComponent {
 
     if (this.props.stickyEdges) {
       initAttrs.plugins.push(new StickyEdges(this.props.stickyEdges))
+    }
+
+    if (this.props.constrainDateWindow) {
+      initAttrs.plugins.push(new ConstrainDateWindow())
     }
 
     this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs)
