@@ -22,7 +22,7 @@ const DateField = {
   NUM_DATEFIELDS: 7,
 }
 
-const TICK_PLACEMENT = []
+export const TICK_PLACEMENT = []
 TICK_PLACEMENT[Granularity.MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 1, spacing: 1}
 TICK_PLACEMENT[Granularity.TWO_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 2, spacing: 2}
 TICK_PLACEMENT[Granularity.FIVE_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 5, spacing: 5}
@@ -63,7 +63,7 @@ TICK_PLACEMENT[Granularity.CENTENNIAL] = {datefield: DateField.DATEFIELD_Y, step
  * @return {number} The appropriate axis granularity for this chart. See the
  *     enumeration of possible values in dygraph-tickers.js.
  */
-const pickDateTickGranularity = (a, b, pixels, opts) => {
+export const pickDateTickGranularity = (a, b, pixels, opts) => {
   const pixelsPerTick = /** @type{number} */(opts('pixelsPerLabel'))
   for (let i = 0; i < Granularity.NUM_GRANULARITIES; i++) {
     const numTicks = numDateTicks(a, b, i)
