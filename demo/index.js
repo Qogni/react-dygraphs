@@ -13,14 +13,10 @@ class DygraphDemo extends React.Component {
   state = {
     data: [
       [startDate, 10, 100],
-      [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 1), 20, 80],
-      [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 2), 50, 60],
-      [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 3), 70, 80],
+      [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 12), 20, 80],
+      [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 24), 50, 60],
+      [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 36), 70, 80],
     ],
-  }
-
-  handleDateWindowChange = (a) => {
-    console.log(a)
   }
 
   handlePointClick = (e, point) => {
@@ -33,8 +29,8 @@ class DygraphDemo extends React.Component {
         <Dygraph
           data={this.state.data}
           fixedYAxis
-          onDateWindowChanged={this.handleDateWindowChange}
           onPointClick={this.handlePointClick}
+          showLabelsOnHighlight={false}
           showRangeSelector
           strokeWidth={3}
           valueRange={[0, 120]}
