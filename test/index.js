@@ -2,6 +2,7 @@ import ModuleDefaultComponent, {
   Dygraph,
   ChartBackground,
   ChartBorder,
+  DayMarker,
   FixedYAxis,
   Normalize,
   Downsample,
@@ -24,6 +25,9 @@ describe('Plugins entry points', () => {
   })
   it('ChartBorder should be a function', () => {
     expect(ChartBorder).to.be.a('function')
+  })
+  it('DayMarker should be a function', () => {
+    expect(DayMarker).to.be.a('function')
   })
   it('FixedYAxis should be a function', () => {
     expect(FixedYAxis).to.be.a('function')
