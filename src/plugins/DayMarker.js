@@ -26,10 +26,14 @@ export default class DayMarker {
     return zeropad(date.getDate()) + '/' + zeropad(date.getMonth() + 1)
   }
 
-  getStepByGranularity (granularity) {
+  getStepByGranularityAndFactor (granularity, factor) {
     if (granularity <= Granularity.SIX_HOURLY) {
       return 1
-    } else if (granularity < Granularity.TWO_DAILY) {
+    } else if (granularity <= Granularity.TWO_DAILY) {
+      if (factor < 750000) {
+        return 2
+      }
+
       return 4
     }
 
@@ -70,7 +74,7 @@ export default class DayMarker {
         dygraph.optionsViewForAxis_('x')
       )
 
-      const step = this.getStepByGranularity(granularity)
+      const step = this.getStepByGranularityAndFactor(granularity, this.factor)
 
       const temp = new Date(this.min)
       temp.setHours(0)
