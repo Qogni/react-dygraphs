@@ -6,6 +6,7 @@
   "jsnext:main": "dist/es/index.js",
   "main": "dist/cjs/index.js",
   "scripts": {
+    "start": "cross-env NODE_ENV=test BABEL_ENV=test webpack-dev-server",
     "build": "npm run build:es && npm run build:cjs",
     "build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel -D src -d dist/es",
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel -D src -d dist/cjs",
@@ -48,6 +49,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.1",
@@ -63,7 +65,8 @@
     "react-test-renderer": "^16.0.0",
     "sinon": "^4.0.1",
     "sinon-chai": "^2.14.0",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
   },
   "repository": {
     "type": "git",
