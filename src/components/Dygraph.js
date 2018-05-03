@@ -54,7 +54,11 @@ export default class Dygraph extends React.PureComponent {
     dayMarker: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.shape({
-
+        color: PropTypes.string,
+        dateFormatter: PropTypes.func,
+        font: PropTypes.string,
+        fontSize: PropTypes.number,
+        markerMargin: PropTypes.number,
       }),
     ]),
     downsample: PropTypes.oneOfType([
