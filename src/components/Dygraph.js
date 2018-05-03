@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DygraphBase from 'dygraphs'
 import { propTypes as dygraphPropTypes, spreadProps as spreadKnownProps } from './Dygraph/options'
+import DayMarker from '../plugins/DayMarker'
 import ChartBackground from '../plugins/ChartBackground'
 import ChartBorder from '../plugins/ChartBorder'
 import FixedYAxis from '../plugins/FixedYAxis'
@@ -50,6 +51,12 @@ export default class Dygraph extends React.PureComponent {
       PropTypes.string,
     ]),
     constrainDateWindow: PropTypes.bool,
+    dayMarker: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.shape({
+
+      }),
+    ]),
     downsample: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.shape({
@@ -91,6 +98,9 @@ export default class Dygraph extends React.PureComponent {
     initAttrs.plugins.push(new DateTickerWorkaround())
     initAttrs.plugins.push(new VisibilityRedraw())
 
+    if (this.props.dayMarker) {
+      initAttrs.plugins.push(new DayMarker())
+    }
     if (this.props.chartBorder) {
       initAttrs.plugins.push(new ChartBorder())
     }
