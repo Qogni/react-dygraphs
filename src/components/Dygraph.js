@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DygraphBase from 'dygraphs'
+import DygraphBase from '@qogni/dygraphs'
 import { propTypes as dygraphPropTypes, spreadProps as spreadKnownProps } from './Dygraph/options'
 import DayMarker from '../plugins/DayMarker'
 import ChartBackground from '../plugins/ChartBackground'

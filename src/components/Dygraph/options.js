@@ -48,6 +48,7 @@ const options = {
   fillAlpha: {type: p.number},
   fillGraph: {type: p.boolean},
   fractions: {type: p.boolean},
+  gapThreshold: {type: p.number},
   gridLineColor: true,
   gridLinePattern: {type: p.arrayOf(p.number)},
   gridLineWidth: {type: p.number},

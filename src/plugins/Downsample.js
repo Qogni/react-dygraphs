@@ -1,6 +1,6 @@
 import Downsampler from 'downsample-lttb'
-import { addEvent, removeEvent } from 'dygraphs/src/dygraph-utils'
-import Dygraphs from 'dygraphs'
+import { addEvent, removeEvent } from '@qogni/dygraphs/src/dygraph-utils'
+import Dygraphs from '@qogni/dygraphs'
 
 const getRangeSelectorCanvas = dygraph => {
   return dygraph.plugins_.find(p => p.plugin instanceof Dygraphs.Plugins.RangeSelector).plugin.fgcanvas_

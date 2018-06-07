@@ -1,5 +1,5 @@
-import * as utils from 'dygraphs/src/dygraph-utils'
-import { Granularity } from 'dygraphs/src/dygraph-tickers'
+import * as utils from '@qogni/dygraphs/src/dygraph-utils'
+import { Granularity } from '@qogni/dygraphs/src/dygraph-tickers'
 
 export var dateTicker = (a, b, pixels, opts, dygraph, vals) => {
   const chosen = pickDateTickGranularity(a, b, pixels, opts)

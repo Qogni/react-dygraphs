@@ -1,4 +1,4 @@
-import Dygraphs from 'dygraphs'
+import Dygraphs from '@qogni/dygraphs'
 import { dateTicker } from '../Ticker/DateWorkaround'
 
 // https://github.com/danvk/dygraphs/pull/912

@@ -1,4 +1,4 @@
-import Dygraphs from 'dygraphs'
+import Dygraphs from '@qogni/dygraphs'
 
 const parseFloat = val => val === null ? NaN : val
 

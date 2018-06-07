@@ -14,6 +14,7 @@ class DygraphDemo extends React.Component {
     data: [
       [startDate, 10, 100],
       [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 12), 20, 80],
+      [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 14), 40, 70],
       [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 24), 50, 60],
       [new Date(startDate.getTime() + 24 * 60 * 60 * 1000 * 36), 70, 80],
     ],
@@ -27,9 +28,17 @@ class DygraphDemo extends React.Component {
     return (
       <div>
         <Dygraph
+          connectSeparatedPoints
           data={this.state.data}
           fixedYAxis
+          gapThreshold={24 * 60 * 60 * 1000 * 12}
+          labels={['tempo', 'teste1', 'teste2']}
           onPointClick={this.handlePointClick}
+          series={{
+            teste1: {
+              'gapThreshold': 24 * 60 * 60 * 1000 * 24,
+            },
+          }}
           showLabelsOnHighlight={false}
           showRangeSelector
           strokeWidth={3}
