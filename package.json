@@ -70,11 +70,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/motiz88/react-dygraphs.git"
+    "url": "https://github.com/qogni/react-dygraphs.git"
   },
   "bugs": {
-    "url": "https://github.com/motiz88/react-dygraphs/issues",
-    "email": "motiz88@gmail.com"
+    "url": "https://github.com/qogni/react-dygraphs/issues"
   },
   "peerDependencies": {
     "@qogni/dygraphs": "^2.2.1",
