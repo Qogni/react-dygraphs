@@ -1,6 +1,6 @@
 {
   "name": "@qogni/react-dygraphs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "module": "dist/es/index.js",
   "jsnext:main": "dist/es/index.js",
