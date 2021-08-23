@@ -74,6 +74,7 @@ const options = {
   logscale: {type: p.boolean},
   maxNumberWidth: {type: p.number},
   panEdgeFraction: {type: p.number},
+  pixelRatio: {type: p.number},
   pixelsPerLabel: {type: p.number},
   plotter: {type: p.oneOfType([p.func, p.arrayOf(p.func)])},
   plugins: true,
