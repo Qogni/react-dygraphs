@@ -23,35 +23,35 @@ const DateField = {
 }
 
 export const TICK_PLACEMENT = []
-TICK_PLACEMENT[Granularity.MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 1, spacing: 1}
-TICK_PLACEMENT[Granularity.TWO_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 2, spacing: 2}
-TICK_PLACEMENT[Granularity.FIVE_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 5, spacing: 5}
-TICK_PLACEMENT[Granularity.TEN_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 10, spacing: 10}
-TICK_PLACEMENT[Granularity.FIFTY_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 50, spacing: 50}
-TICK_PLACEMENT[Granularity.HUNDRED_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 100, spacing: 100}
-TICK_PLACEMENT[Granularity.FIVE_HUNDRED_MILLISECONDLY] = {datefield: DateField.DATEFIELD_MS, step: 500, spacing: 500}
-TICK_PLACEMENT[Granularity.SECONDLY] = {datefield: DateField.DATEFIELD_SS, step: 1, spacing: 1000 * 1}
-TICK_PLACEMENT[Granularity.TWO_SECONDLY] = {datefield: DateField.DATEFIELD_SS, step: 2, spacing: 1000 * 2}
-TICK_PLACEMENT[Granularity.FIVE_SECONDLY] = {datefield: DateField.DATEFIELD_SS, step: 5, spacing: 1000 * 5}
-TICK_PLACEMENT[Granularity.TEN_SECONDLY] = {datefield: DateField.DATEFIELD_SS, step: 10, spacing: 1000 * 10}
-TICK_PLACEMENT[Granularity.THIRTY_SECONDLY] = {datefield: DateField.DATEFIELD_SS, step: 30, spacing: 1000 * 30}
-TICK_PLACEMENT[Granularity.MINUTELY] = {datefield: DateField.DATEFIELD_MM, step: 1, spacing: 1000 * 60}
-TICK_PLACEMENT[Granularity.TWO_MINUTELY] = {datefield: DateField.DATEFIELD_MM, step: 2, spacing: 1000 * 60 * 2}
-TICK_PLACEMENT[Granularity.FIVE_MINUTELY] = {datefield: DateField.DATEFIELD_MM, step: 5, spacing: 1000 * 60 * 5}
-TICK_PLACEMENT[Granularity.TEN_MINUTELY] = {datefield: DateField.DATEFIELD_MM, step: 10, spacing: 1000 * 60 * 10}
-TICK_PLACEMENT[Granularity.THIRTY_MINUTELY] = {datefield: DateField.DATEFIELD_MM, step: 30, spacing: 1000 * 60 * 30}
-TICK_PLACEMENT[Granularity.HOURLY] = {datefield: DateField.DATEFIELD_HH, step: 1, spacing: 1000 * 3600}
-TICK_PLACEMENT[Granularity.TWO_HOURLY] = {datefield: DateField.DATEFIELD_HH, step: 2, spacing: 1000 * 3600 * 2}
-TICK_PLACEMENT[Granularity.SIX_HOURLY] = {datefield: DateField.DATEFIELD_HH, step: 6, spacing: 1000 * 3600 * 6}
-TICK_PLACEMENT[Granularity.DAILY] = {datefield: DateField.DATEFIELD_D, step: 1, spacing: 1000 * 86400}
-TICK_PLACEMENT[Granularity.TWO_DAILY] = {datefield: DateField.DATEFIELD_D, step: 2, spacing: 1000 * 86400 * 2}
-TICK_PLACEMENT[Granularity.WEEKLY] = {datefield: DateField.DATEFIELD_D, step: 7, spacing: 1000 * 604800}
-TICK_PLACEMENT[Granularity.MONTHLY] = {datefield: DateField.DATEFIELD_M, step: 1, spacing: 1000 * 7200 * 365.2524} // 1e3 * 60 * 60 * 24 * 365.2524 / 12
-TICK_PLACEMENT[Granularity.QUARTERLY] = {datefield: DateField.DATEFIELD_M, step: 3, spacing: 1000 * 21600 * 365.2524} // 1e3 * 60 * 60 * 24 * 365.2524 / 4
-TICK_PLACEMENT[Granularity.BIANNUAL] = {datefield: DateField.DATEFIELD_M, step: 6, spacing: 1000 * 43200 * 365.2524} // 1e3 * 60 * 60 * 24 * 365.2524 / 2
-TICK_PLACEMENT[Granularity.ANNUAL] = {datefield: DateField.DATEFIELD_Y, step: 1, spacing: 1000 * 86400 * 365.2524} // 1e3 * 60 * 60 * 24 * 365.2524 * 1
-TICK_PLACEMENT[Granularity.DECADAL] = {datefield: DateField.DATEFIELD_Y, step: 10, spacing: 1000 * 864000 * 365.2524} // 1e3 * 60 * 60 * 24 * 365.2524 * 10
-TICK_PLACEMENT[Granularity.CENTENNIAL] = {datefield: DateField.DATEFIELD_Y, step: 100, spacing: 1000 * 8640000 * 365.2524} // 1e3 * 60 * 60 * 24 * 365.2524 * 100
+TICK_PLACEMENT[Granularity.MILLISECONDLY] = { datefield: DateField.DATEFIELD_MS, step: 1, spacing: 1 }
+TICK_PLACEMENT[Granularity.TWO_MILLISECONDLY] = { datefield: DateField.DATEFIELD_MS, step: 2, spacing: 2 }
+TICK_PLACEMENT[Granularity.FIVE_MILLISECONDLY] = { datefield: DateField.DATEFIELD_MS, step: 5, spacing: 5 }
+TICK_PLACEMENT[Granularity.TEN_MILLISECONDLY] = { datefield: DateField.DATEFIELD_MS, step: 10, spacing: 10 }
+TICK_PLACEMENT[Granularity.FIFTY_MILLISECONDLY] = { datefield: DateField.DATEFIELD_MS, step: 50, spacing: 50 }
+TICK_PLACEMENT[Granularity.HUNDRED_MILLISECONDLY] = { datefield: DateField.DATEFIELD_MS, step: 100, spacing: 100 }
+TICK_PLACEMENT[Granularity.FIVE_HUNDRED_MILLISECONDLY] = { datefield: DateField.DATEFIELD_MS, step: 500, spacing: 500 }
+TICK_PLACEMENT[Granularity.SECONDLY] = { datefield: DateField.DATEFIELD_SS, step: 1, spacing: 1000 * 1 }
+TICK_PLACEMENT[Granularity.TWO_SECONDLY] = { datefield: DateField.DATEFIELD_SS, step: 2, spacing: 1000 * 2 }
+TICK_PLACEMENT[Granularity.FIVE_SECONDLY] = { datefield: DateField.DATEFIELD_SS, step: 5, spacing: 1000 * 5 }
+TICK_PLACEMENT[Granularity.TEN_SECONDLY] = { datefield: DateField.DATEFIELD_SS, step: 10, spacing: 1000 * 10 }
+TICK_PLACEMENT[Granularity.THIRTY_SECONDLY] = { datefield: DateField.DATEFIELD_SS, step: 30, spacing: 1000 * 30 }
+TICK_PLACEMENT[Granularity.MINUTELY] = { datefield: DateField.DATEFIELD_MM, step: 1, spacing: 1000 * 60 }
+TICK_PLACEMENT[Granularity.TWO_MINUTELY] = { datefield: DateField.DATEFIELD_MM, step: 2, spacing: 1000 * 60 * 2 }
+TICK_PLACEMENT[Granularity.FIVE_MINUTELY] = { datefield: DateField.DATEFIELD_MM, step: 5, spacing: 1000 * 60 * 5 }
+TICK_PLACEMENT[Granularity.TEN_MINUTELY] = { datefield: DateField.DATEFIELD_MM, step: 10, spacing: 1000 * 60 * 10 }
+TICK_PLACEMENT[Granularity.THIRTY_MINUTELY] = { datefield: DateField.DATEFIELD_MM, step: 30, spacing: 1000 * 60 * 30 }
+TICK_PLACEMENT[Granularity.HOURLY] = { datefield: DateField.DATEFIELD_HH, step: 1, spacing: 1000 * 3600 }
+TICK_PLACEMENT[Granularity.TWO_HOURLY] = { datefield: DateField.DATEFIELD_HH, step: 2, spacing: 1000 * 3600 * 2 }
+TICK_PLACEMENT[Granularity.SIX_HOURLY] = { datefield: DateField.DATEFIELD_HH, step: 6, spacing: 1000 * 3600 * 6 }
+TICK_PLACEMENT[Granularity.DAILY] = { datefield: DateField.DATEFIELD_D, step: 1, spacing: 1000 * 86400 }
+TICK_PLACEMENT[Granularity.TWO_DAILY] = { datefield: DateField.DATEFIELD_D, step: 2, spacing: 1000 * 86400 * 2 }
+TICK_PLACEMENT[Granularity.WEEKLY] = { datefield: DateField.DATEFIELD_D, step: 7, spacing: 1000 * 604800 }
+TICK_PLACEMENT[Granularity.MONTHLY] = { datefield: DateField.DATEFIELD_M, step: 1, spacing: 1000 * 7200 * 365.2524 } // 1e3 * 60 * 60 * 24 * 365.2524 / 12
+TICK_PLACEMENT[Granularity.QUARTERLY] = { datefield: DateField.DATEFIELD_M, step: 3, spacing: 1000 * 21600 * 365.2524 } // 1e3 * 60 * 60 * 24 * 365.2524 / 4
+TICK_PLACEMENT[Granularity.BIANNUAL] = { datefield: DateField.DATEFIELD_M, step: 6, spacing: 1000 * 43200 * 365.2524 } // 1e3 * 60 * 60 * 24 * 365.2524 / 2
+TICK_PLACEMENT[Granularity.ANNUAL] = { datefield: DateField.DATEFIELD_Y, step: 1, spacing: 1000 * 86400 * 365.2524 } // 1e3 * 60 * 60 * 24 * 365.2524 * 1
+TICK_PLACEMENT[Granularity.DECADAL] = { datefield: DateField.DATEFIELD_Y, step: 10, spacing: 1000 * 864000 * 365.2524 } // 1e3 * 60 * 60 * 24 * 365.2524 * 10
+TICK_PLACEMENT[Granularity.CENTENNIAL] = { datefield: DateField.DATEFIELD_Y, step: 100, spacing: 1000 * 8640000 * 365.2524 } // 1e3 * 60 * 60 * 24 * 365.2524 * 100
 
 /**
  * Determine the correct granularity of ticks on a date axis.
@@ -139,8 +139,8 @@ export var getDateAxis = function (startTime, endTime, granularity, opts, dg) {
       tickTime = tickDate.getTime()
     }
     while (tickTime <= endTime) {
-      if (granularity >= Granularity.DAILY ||
-        accessors.getHours(tickDate) % step === 0) {
+      if (granularity >= Granularity.DAILY
+        || accessors.getHours(tickDate) % step === 0) {
         ticks.push({ v: tickTime,
           label: formatter.call(dg, tickDate, granularity, opts, dg),
         })

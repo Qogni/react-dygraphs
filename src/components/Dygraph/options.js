@@ -1,41 +1,41 @@
 import p from 'prop-types'
 
 const options = {
-  animatedZooms: {type: p.boolean},
-  annotationClickHandler: {type: p.func, rename: 'onAnnotationClick'},
-  annotationDblClickHandler: {type: p.func, rename: 'onAnnotationDblClick'},
-  annotationMouseOutHandler: {type: p.func, rename: 'onAnnotationMouseOut'},
-  annotationMouseOverHandler: {type: p.func, rename: 'onAnnotationMouseOver'},
+  animatedZooms: { type: p.boolean },
+  annotationClickHandler: { type: p.func, rename: 'onAnnotationClick' },
+  annotationDblClickHandler: { type: p.func, rename: 'onAnnotationDblClick' },
+  annotationMouseOutHandler: { type: p.func, rename: 'onAnnotationMouseOut' },
+  annotationMouseOverHandler: { type: p.func, rename: 'onAnnotationMouseOver' },
   axes: true,
-  axis: {type: p.string},
+  axis: { type: p.string },
   axisLabelColor: true,
-  axisLabelFontSize: {type: p.number},
+  axisLabelFontSize: { type: p.number },
   axisLabelFormatter: true,
-  axisLabelWidth: {type: p.number},
+  axisLabelWidth: { type: p.number },
   axisLineColor: true,
-  axisLineWidth: {type: p.number},
-  axisTickSize: {type: p.number},
-  clickCallback: {type: p.func, rename: 'onClick'},
+  axisLineWidth: { type: p.number },
+  axisTickSize: { type: p.number },
+  clickCallback: { type: p.func, rename: 'onClick' },
   color: true,
-  colorSaturation: {type: p.number},
-  colorValue: {type: p.number},
+  colorSaturation: { type: p.number },
+  colorValue: { type: p.number },
   colors: true,
-  connectSeparatedPoints: {type: p.boolean},
-  customBars: {type: p.boolean},
+  connectSeparatedPoints: { type: p.boolean },
+  customBars: { type: p.boolean },
   dataHandler: true,
   dateWindow: true,
-  delimiter: {type: p.string},
-  digitsAfterDecimal: {type: p.number},
-  displayAnnotations: {type: p.boolean},
-  drawAxesAtZero: {type: p.boolean},
-  drawAxis: {type: p.boolean},
-  drawCallback: {type: p.func},
-  drawGapEdgePoints: {type: p.boolean},
-  drawGrid: {type: p.boolean},
-  drawHighlightPointCallback: {type: p.func},
-  drawPointCallback: {type: p.func},
-  drawPoints: {type: p.boolean},
-  errorBars: {type: p.boolean},
+  delimiter: { type: p.string },
+  digitsAfterDecimal: { type: p.number },
+  displayAnnotations: { type: p.boolean },
+  drawAxesAtZero: { type: p.boolean },
+  drawAxis: { type: p.boolean },
+  drawCallback: { type: p.func },
+  drawGapEdgePoints: { type: p.boolean },
+  drawGrid: { type: p.boolean },
+  drawHighlightPointCallback: { type: p.func },
+  drawPointCallback: { type: p.func },
+  drawPoints: { type: p.boolean },
+  errorBars: { type: p.boolean },
   file: {
     type: p.oneOfType([
       p.string /* CSV or URL */,
@@ -45,84 +45,84 @@ const options = {
     rename: 'data',
     hideOnInit: true,
   },
-  fillAlpha: {type: p.number},
-  fillGraph: {type: p.boolean},
-  fractions: {type: p.boolean},
-  gapThreshold: {type: p.number},
+  fillAlpha: { type: p.number },
+  fillGraph: { type: p.boolean },
+  fractions: { type: p.boolean },
+  gapThreshold: { type: p.number },
   gridLineColor: true,
-  gridLinePattern: {type: p.arrayOf(p.number)},
-  gridLineWidth: {type: p.number},
-  height: {type: p.number},
-  hideOverlayOnMouseOut: {type: p.boolean},
-  highlightCallback: {type: p.func, rename: 'onHighlight'},
+  gridLinePattern: { type: p.arrayOf(p.number) },
+  gridLineWidth: { type: p.number },
+  height: { type: p.number },
+  hideOverlayOnMouseOut: { type: p.boolean },
+  highlightCallback: { type: p.func, rename: 'onHighlight' },
   highlightCircleSize: true,
   highlightSeriesBackgroundAlpha: true,
   highlightSeriesOpts: true,
-  includeZero: {type: p.boolean},
-  independentTicks: {type: p.boolean},
+  includeZero: { type: p.boolean },
+  independentTicks: { type: p.boolean },
   interactionModel: true,
   isZoomedIgnoreProgrammaticZoom: true,
-  labels: {type: p.arrayOf(p.string)},
+  labels: { type: p.arrayOf(p.string) },
   labelsDiv: true,
-  labelsKMB: {type: p.boolean},
-  labelsKMG2: {type: p.boolean},
-  labelsSeparateLines: {type: p.boolean},
-  labelsShowZeroValues: {type: p.boolean},
-  labelsUTC: {type: p.boolean},
+  labelsKMB: { type: p.boolean },
+  labelsKMG2: { type: p.boolean },
+  labelsSeparateLines: { type: p.boolean },
+  labelsShowZeroValues: { type: p.boolean },
+  labelsUTC: { type: p.boolean },
   legend: p.oneOf(['onmouseover', 'always', 'follow', 'never']),
-  legendFormatter: {type: p.func},
-  logscale: {type: p.boolean},
-  maxNumberWidth: {type: p.number},
-  panEdgeFraction: {type: p.number},
-  pixelRatio: {type: p.number},
-  pixelsPerLabel: {type: p.number},
-  plotter: {type: p.oneOfType([p.func, p.arrayOf(p.func)])},
+  legendFormatter: { type: p.func },
+  logscale: { type: p.boolean },
+  maxNumberWidth: { type: p.number },
+  panEdgeFraction: { type: p.number },
+  pixelRatio: { type: p.number },
+  pixelsPerLabel: { type: p.number },
+  plotter: { type: p.oneOfType([p.func, p.arrayOf(p.func)]) },
   plugins: true,
-  pointClickCallback: {type: p.func, rename: 'onPointClick'},
-  pointSize: {type: p.number},
-  rangeSelectorHeight: {type: p.number},
+  pointClickCallback: { type: p.func, rename: 'onPointClick' },
+  pointSize: { type: p.number },
+  rangeSelectorHeight: { type: p.number },
   rangeSelectorPlotFillColor: true,
   rangeSelectorPlotStrokeColor: true,
-  rightGap: {type: p.number},
-  rollPeriod: {type: p.number},
+  rightGap: { type: p.number },
+  rollPeriod: { type: p.number },
   series: true,
-  showInRangeSelector: {type: p.boolean},
-  showLabelsOnHighlight: {type: p.boolean},
-  showRangeSelector: {type: p.boolean},
-  showRoller: {type: p.boolean},
-  sigFigs: {type: p.number},
-  sigma: {type: p.number},
-  stackedGraph: {type: p.boolean},
+  showInRangeSelector: { type: p.boolean },
+  showLabelsOnHighlight: { type: p.boolean },
+  showRangeSelector: { type: p.boolean },
+  showRoller: { type: p.boolean },
+  sigFigs: { type: p.number },
+  sigma: { type: p.number },
+  stackedGraph: { type: p.boolean },
   stackedGraphNaNFill: true,
-  stepPlot: {type: p.boolean},
+  stepPlot: { type: p.boolean },
   strokeBorderColor: true,
-  strokeBorderWidth: {type: p.number},
+  strokeBorderWidth: { type: p.number },
   strokePattern: true,
-  strokeWidth: {type: p.number},
+  strokeWidth: { type: p.number },
   ticker: true,
   timingName: true,
   title: true,
-  titleHeight: {type: p.number},
-  underlayCallback: {type: p.func},
-  unhighlightCallback: {type: p.func, rename: 'onUnhighlight'},
+  titleHeight: { type: p.number },
+  underlayCallback: { type: p.func },
+  unhighlightCallback: { type: p.func, rename: 'onUnhighlight' },
   valueFormatter: true,
   valueRange: true,
-  visibility: {type: p.array},
-  width: {type: p.number},
+  visibility: { type: p.array },
+  width: { type: p.number },
   wilsonInterval: true,
-  xAxisHeight: {type: p.number},
-  xLabelHeight: {type: p.number},
-  xRangePad: {type: p.number},
+  xAxisHeight: { type: p.number },
+  xLabelHeight: { type: p.number },
+  xRangePad: { type: p.number },
   xValueParser: true,
   xlabel: true,
   y2label: true,
-  yLabelWidth: {type: p.number},
-  yRangePad: {type: p.number},
+  yLabelWidth: { type: p.number },
+  yRangePad: { type: p.number },
   ylabel: true,
-  zoomCallback: {type: p.func, rename: 'onZoom'},
+  zoomCallback: { type: p.func, rename: 'onZoom' },
 }
 
-function getPropType (optionPropConfig) {
+function getPropType(optionPropConfig) {
   if (!optionPropConfig) {
     return undefined
   } else if (optionPropConfig === true) {
@@ -136,7 +136,7 @@ function getPropType (optionPropConfig) {
   return optionPropConfig.type
 }
 
-function getPropName (optionPropConfig, optionName) {
+function getPropName(optionPropConfig, optionName) {
   if (!optionPropConfig || optionPropConfig === true) {
     return optionName
   } else if (typeof optionPropConfig.rename === 'string') {
@@ -146,7 +146,7 @@ function getPropName (optionPropConfig, optionName) {
   return optionName
 }
 
-function optionIsPrivate (optionPropConfig) {
+function optionIsPrivate(optionPropConfig) {
   if (optionPropConfig === false) {
     return true
   } else if (!optionPropConfig) {
@@ -158,7 +158,7 @@ function optionIsPrivate (optionPropConfig) {
   return optionPropConfig.private
 }
 
-function optionHideOnInit (optionPropConfig) {
+function optionHideOnInit(optionPropConfig) {
   if (optionPropConfig === false) {
     return false
   } else if (!optionPropConfig) {
@@ -170,7 +170,7 @@ function optionHideOnInit (optionPropConfig) {
   return optionPropConfig.hideOnInit
 }
 
-function getReactPropTypes (options) {
+function getReactPropTypes(options) {
   const props = {}
   for (const optionName in options) {
     const option = options[optionName]
@@ -182,7 +182,7 @@ function getReactPropTypes (options) {
   return props
 }
 
-function getPropMap (options) {
+function getPropMap(options) {
   const propMap = {}
   for (const optionName in options) {
     const option = options[optionName]
@@ -196,15 +196,15 @@ function getPropMap (options) {
 
 const propMap = getPropMap(options)
 
-function spreadProps (props, isInit) {
+function spreadProps(props, isInit) {
   const known = {}
   const rest = {}
 
   for (const propName in props) {
     const isDygraphsProp = !!propMap[propName]
     if (isDygraphsProp) {
-      if ((isInit && optionHideOnInit(options[propMap[propName]])) ||
-        optionIsPrivate(options[propMap[propName]])
+      if ((isInit && optionHideOnInit(options[propMap[propName]]))
+        || optionIsPrivate(options[propMap[propName]])
       ) {
         continue
       }
@@ -213,7 +213,7 @@ function spreadProps (props, isInit) {
     const nameOut = isDygraphsProp ? propMap[propName] : propName
     target[nameOut] = props[propName]
   }
-  return {known, rest}
+  return { known, rest }
 }
 
 const propTypes = getReactPropTypes(options)

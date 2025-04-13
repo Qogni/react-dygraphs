@@ -3,7 +3,7 @@ export default class ConstrainDateWindow {
     return 'ConstrainDateWindow Plugin'
   }
 
-  constructor (options = {}) {
+  constructor(options = {}) {
     options = { ...options, constrainToData: true, minRangeWidth: 12 }
     this.updateOptions(options)
   }

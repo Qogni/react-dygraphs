@@ -1,5 +1,5 @@
 export default class ChartBackground {
-  constructor (color = '#fff') {
+  constructor(color = '#fff') {
     this.color = color
   }
 

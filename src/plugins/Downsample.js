@@ -2,7 +2,7 @@ import Downsampler from 'downsample-lttb'
 import { addEvent, removeEvent } from '@qogni/dygraphs/src/dygraph-utils'
 import Dygraphs from '@qogni/dygraphs'
 
-const getRangeSelectorCanvas = dygraph => {
+const getRangeSelectorCanvas = (dygraph) => {
   return dygraph.plugins_.find(p => p.plugin instanceof Dygraphs.Plugins.RangeSelector).plugin.fgcanvas_
 }
 
@@ -11,7 +11,7 @@ export default class Downsample {
     return 'Downsample Plugin'
   }
 
-  constructor (options) {
+  constructor(options) {
     this.visibleThreshold = Infinity
     this.invisibleThreshold = 100
     this.mousedown = false
@@ -34,7 +34,7 @@ export default class Downsample {
 
   mouseupHandler = (e) => {
     if (this.mousedown) {
-      this.dygraph.updateOptions({file: this.dygraph.file_}, false)
+      this.dygraph.updateOptions({ file: this.dygraph.file_ }, false)
       this.mousedown = false
     }
   }
@@ -60,19 +60,19 @@ export default class Downsample {
 
       if (leftBoundary > 0) {
         newData = newData.concat(
-          Downsampler.processData(series.slice(0, leftBoundary), this.invisibleThreshold)
+          Downsampler.processData(series.slice(0, leftBoundary), this.invisibleThreshold),
         )
       }
 
       newData = newData.concat(
-        Downsampler.processData(series.slice(leftBoundary, rightBoundary), this.visibleThreshold)
+        Downsampler.processData(series.slice(leftBoundary, rightBoundary), this.visibleThreshold),
       )
 
       if (rightBoundary < series.length) {
         newData = newData.concat(
           Downsampler.processData(
-            series.slice(rightBoundary), this.invisibleThreshold
-          )
+            series.slice(rightBoundary), this.invisibleThreshold,
+          ),
         )
       }
 

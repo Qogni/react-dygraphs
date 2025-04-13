@@ -3,7 +3,7 @@ export default class SupressEmptyDataError {
     return 'SupressEmptyDataError Plugin'
   }
 
-  activate (dygraph) {
+  activate(dygraph) {
     const originalParseArray = dygraph.parseArray_
     dygraph.parseArray_ = (data) => {
       if (data.length === 0) {

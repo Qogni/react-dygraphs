@@ -6,8 +6,8 @@ const getRangeMap = (dygraph, ranges) => dygraph.getOption('labels').slice(1).re
 
   return {
     [l]: {
-      normalize: (y) => ((y - min) * normalizeRatio),
-      formatValue: (y) => (y * formatRatio) + min,
+      normalize: y => ((y - min) * normalizeRatio),
+      formatValue: y => (y * formatRatio) + min,
     },
     ...a,
   }
@@ -18,7 +18,7 @@ export default class Normalize {
     return 'Normalize Plugin'
   }
 
-  constructor (options) {
+  constructor(options) {
     this.updateOptions(options)
   }
 
@@ -42,6 +42,7 @@ export default class Normalize {
   activate = (dygraph) => {
     this.dygraph = dygraph
     this.updateRangeMap()
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const $this = this
 
     const seriesToPoints = function (series, setName, boundaryIdStart) {
@@ -77,7 +78,7 @@ export default class Normalize {
             yval: $this.rangeMap[point.name].formatValue(point.yval),
           })),
           row,
-          seriesName
+          seriesName,
         )
       }
     }
@@ -86,7 +87,7 @@ export default class Normalize {
       return $this.rangeMap[seriesName].formatValue(y)
     }
 
-    axes.y.ticker = () => [...Array(this.notches + 1).keys()].map(n => {
+    axes.y.ticker = () => [...Array(this.notches + 1).keys()].map((n) => {
       const value = (n / this.notches) * 100
 
       return {

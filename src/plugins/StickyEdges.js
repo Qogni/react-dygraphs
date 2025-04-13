@@ -3,7 +3,7 @@ export default class StickyEdges {
     return 'StickyEdges Plugin'
   }
 
-  constructor ({ right = true, left = false } = {}) {
+  constructor({ right = true, left = false } = {}) {
     this.updateOptions(arguments[0])
   }
 
@@ -27,8 +27,8 @@ export default class StickyEdges {
       if (e.dygraph.rawData_) {
         const [min, max] = e.dygraph.xAxisExtremes()
 
-        if (e.dygraph.dateWindow_ === undefined ||
-          e.dygraph.dateWindow_ === null
+        if (e.dygraph.dateWindow_ === undefined
+          || e.dygraph.dateWindow_ === null
         ) {
           e.dygraph.dateWindow_ = [min, max]
         }

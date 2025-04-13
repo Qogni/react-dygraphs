@@ -19,20 +19,24 @@ import OptimizedDataHandler from '../datahandler/Optimized'
 DygraphBase.PLUGINS[DygraphBase.PLUGINS.indexOf(DygraphBase.Plugins.RangeSelector)] = NoWarningRangeSelector
 
 class InteractionModelProxy {
-  constructor () {
+  constructor() {
     for (const method of ['mousedown', 'touchstart', 'touchmove', 'touchend', 'dblclick']) {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
       const thisProxy = this
       this[method] = function (...args) {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const calledContext = this
         return thisProxy._target[method].call(calledContext, ...args)
       }
     }
-    ['willDestroyContextMyself'].forEach(prop => {
+    ['willDestroyContextMyself'].forEach((prop) => {
       Object.defineProperty(this, prop, {
         configurable: false,
         enumerable: true,
         get: () => this._target[prop],
-        set: value => (this._target[prop] = value),
+        set: (value) => {
+          this._target[prop] = value
+        },
       })
     })
   }
@@ -84,10 +88,10 @@ export default class Dygraph extends React.PureComponent {
     ...dygraphPropTypes,
   }
 
-  componentDidMount () {
-    const {known: initAttrs} = spreadKnownProps(this.props, true)
-    this._interactionProxy._target =
-      initAttrs.interactionModel || DygraphBase.defaultInteractionModel
+  componentDidMount() {
+    const { known: initAttrs } = spreadKnownProps(this.props, true)
+    this._interactionProxy._target
+      = initAttrs.interactionModel || DygraphBase.defaultInteractionModel
     initAttrs.interactionModel = this._interactionProxy
 
     if (!initAttrs.dataHandler) {
@@ -146,17 +150,18 @@ export default class Dygraph extends React.PureComponent {
     this._dygraph = new DygraphBase(this.root, this.props.data, initAttrs)
 
     let dateWindow
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this
     Object.defineProperty(this._dygraph, 'dateWindow_', {
       enumerable: true,
-      get () { return dateWindow },
-      set (value) {
-        if (dateWindow === undefined ||
-          dateWindow === null ||
-          value === undefined ||
-          value === null ||
-          value[0] !== dateWindow[0] ||
-          value[1] !== dateWindow[1]
+      get() { return dateWindow },
+      set(value) {
+        if (dateWindow === undefined
+          || dateWindow === null
+          || value === undefined
+          || value === null
+          || value[0] !== dateWindow[0]
+          || value[1] !== dateWindow[1]
         ) {
           dateWindow = value
           if (self.props.onDateWindowChanged) {
@@ -167,11 +172,11 @@ export default class Dygraph extends React.PureComponent {
     })
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     if (this._dygraph) {
-      const {known: updateAttrs} = spreadKnownProps(this.props, false)
-      this._interactionProxy._target =
-        updateAttrs.interactionModel || DygraphBase.defaultInteractionModel
+      const { known: updateAttrs } = spreadKnownProps(this.props, false)
+      this._interactionProxy._target
+        = updateAttrs.interactionModel || DygraphBase.defaultInteractionModel
       updateAttrs.interactionModel = this._interactionProxy
 
       if (this.props.normalize && this.props.normalize !== prevProps.normalize) {
@@ -186,7 +191,7 @@ export default class Dygraph extends React.PureComponent {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     if (this._dygraph) {
       this._dygraph.destroy()
       this._dygraph = null
@@ -195,10 +200,10 @@ export default class Dygraph extends React.PureComponent {
 
   _interactionProxy = new InteractionModelProxy()
 
-  render () {
+  render() {
     return (
       <div
-        ref={(root) => (this.root = root)}
+        ref={root => (this.root = root)}
         style={this.props.style}
       />
     )

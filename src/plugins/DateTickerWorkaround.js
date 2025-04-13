@@ -7,7 +7,7 @@ export default class DateTickerWorkaround {
     return 'DateTickerWorkaround Plugin'
   }
 
-  activate (dygraph) {
+  activate(dygraph) {
     const originalOptionsViewForAxis = dygraph.optionsViewForAxis_
     dygraph.optionsViewForAxis_ = (axis) => {
       const original = originalOptionsViewForAxis.call(dygraph, axis)

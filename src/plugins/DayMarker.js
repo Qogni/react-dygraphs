@@ -11,7 +11,7 @@ export default class DayMarker {
     markerMargin: 10,
   }
 
-  constructor (options = {}) {
+  constructor(options = {}) {
     this.options = {
       ...options,
       ...DayMarker.defaultOptions,
@@ -22,11 +22,11 @@ export default class DayMarker {
     return 'DayMarker Plugin'
   }
 
-  static formatDate (date) {
+  static formatDate(date) {
     return zeropad(date.getDate()) + '/' + zeropad(date.getMonth() + 1)
   }
 
-  getStepByGranularityAndFactor (granularity, factor) {
+  getStepByGranularityAndFactor(granularity, factor) {
     if (granularity <= Granularity.SIX_HOURLY) {
       return 1
     } else if (granularity <= Granularity.TWO_DAILY) {
@@ -71,7 +71,7 @@ export default class DayMarker {
         this.min,
         this.max,
         plotAreaWidth,
-        dygraph.optionsViewForAxis_('x')
+        dygraph.optionsViewForAxis_('x'),
       )
 
       const step = this.getStepByGranularityAndFactor(granularity, this.factor)
@@ -84,8 +84,8 @@ export default class DayMarker {
       temp.setDate(1)
       temp.setDate(temp.getDate() - temp.getDay())
 
-      if (granularity < Granularity.WEEKLY &&
-      granularity > Granularity.SIX_HOURLY) {
+      if (granularity < Granularity.WEEKLY
+        && granularity > Granularity.SIX_HOURLY) {
         temp.setDate(temp.getDate() + temp.getDate() % 2)
       }
 

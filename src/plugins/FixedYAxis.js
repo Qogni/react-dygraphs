@@ -3,7 +3,7 @@ export default class FixedYAxis {
     return 'FixedYAxis Plugin'
   }
 
-  activate (dygraph) {
+  activate(dygraph) {
     let valueRange = dygraph.getOption('valueRange')
 
     if (!valueRange) {
@@ -14,8 +14,8 @@ export default class FixedYAxis {
     const predraw = (e) => {
       let newRange = dygraph.getOption('valueRange')
 
-      if (valueRange[0] !== newRange[0] ||
-      valueRange[1] !== newRange[1]) {
+      if (valueRange[0] !== newRange[0]
+        || valueRange[1] !== newRange[1]) {
         valueRange = newRange
       }
 
