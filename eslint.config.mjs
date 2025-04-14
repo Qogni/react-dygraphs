@@ -17,7 +17,11 @@ export default tseslint.config(
     },
     languageOptions: {
       parser: parserTs,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.chai,
+        ...globals.mocha,
+      },
     },
     rules: {
       '@typescript-eslint/no-require-imports': ['off'],
@@ -36,6 +40,12 @@ export default tseslint.config(
       '@stylistic/brace-style': [1, '1tbs', {
         allowSingleLine: true,
       }],
+    },
+  },
+  {
+    files: ['karma-ci.conf.js'],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 )
