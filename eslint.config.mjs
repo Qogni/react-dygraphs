@@ -19,8 +19,6 @@ export default tseslint.config(
       parser: parserTs,
       globals: {
         ...globals.browser,
-        ...globals.chai,
-        ...globals.mocha,
       },
     },
     rules: {
@@ -43,7 +41,17 @@ export default tseslint.config(
     },
   },
   {
-    files: ['karma-ci.conf.js'],
+    files: ['test/**/*'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.chai,
+        ...globals.mocha,
+      },
+    },
+  },
+  {
+    files: ['karma-ci.conf.js', 'webpack.config.js'],
     languageOptions: {
       globals: globals.node,
     },

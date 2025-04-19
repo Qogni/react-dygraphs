@@ -4,7 +4,7 @@ module.exports = function (config) {
     frameworks: ['mocha', 'sinon-chai'],
     files: [
       'test/index.js',
-      { pattern: 'test/specs/**' },
+      { pattern: 'test/specs/**/*' },
     ],
     exclude: [],
     preprocessors: {
@@ -16,8 +16,16 @@ module.exports = function (config) {
       module: {
         rules: [
           {
-            test: /\.jsx?$/,
-            loader: 'babel-loader',
+            test: /\.(d\.ts)$/,
+            use: [
+              {
+                loader: 'null-loader',
+              },
+            ],
+          },
+          {
+            test: /\.(js|jsx|ts|tsx)?$/,
+            loader: 'ts-loader',
             exclude: /node_modules/,
           },
         ],

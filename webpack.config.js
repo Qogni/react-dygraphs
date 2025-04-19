@@ -1,9 +1,7 @@
-/* eslint-env node */
-/* eslint import/no-nodejs-modules: 0 import/no-commonjs: 0 */
-
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
+  mode: 'development',
   target: 'web',
   entry: {
     main: [
@@ -11,13 +9,21 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx'],
+    extensions: ['.json', '.js', '.jsx', 'ts', 'tsx'],
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.(d\.ts)$/,
+        use: [
+          {
+            loader: 'null-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(js|jsx|ts|tsx)?$/,
+        loader: 'ts-loader',
         exclude: /node_modules/,
       },
     ],
