@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dygraph } from '@src'
+import type { dygraphs } from 'dygraphs'
 
 const container = document.createElement('div')
 document.body.appendChild(container)
@@ -20,7 +21,7 @@ class DygraphDemo extends React.Component {
     ],
   }
 
-  handlePointClick = (e, point) => {
+  handlePointClick: dygraphs.Options['pointClickCallback'] = (e, point) => {
     this.setState({ clicked: point.idx })
   }
 

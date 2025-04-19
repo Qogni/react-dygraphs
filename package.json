@@ -16,7 +16,8 @@
     "eslint": "eslint src/**/*.js src/**/*.jsx  demo/**/*.js demo/**/*.jsx test/**/*.js test/**/*.jsx",
     "eclint": "eclint check *.js *.json *.sublime-project *.md *.yml *.*rc *.*ignore src/**/*.js src/**/*.jsx  demo/**/*.js demo/**/*.jsx test/**/*.js test/**/*.jsx",
     "ecfix": "eclint fix *.js *.json *.sublime-project *.md *.yml *.*rc *.*ignore src/**/*.js src/**/*.jsx  demo/**/*.js demo/**/*.jsx test/**/*.js test/**/*.jsx",
-    "check-style": "npm run eclint && npm run eslint"
+    "check-style": "npm run eclint && npm run eslint",
+    "type-check": "tsc"
   },
   "author": "Moti Zilberman <motiz88@gmail.com>",
   "contributors": [
@@ -78,6 +79,7 @@
     "react-dom": "15.x || 16.x"
   },
   "dependencies": {
+    "@types/dygraphs": "^2.1.10",
     "downsample-lttb": "0.0.1"
   }
 }
