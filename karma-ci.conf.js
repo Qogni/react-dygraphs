@@ -3,7 +3,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['mocha', 'sinon-chai'],
     files: [
-      'test/index.js',
+      'test/index.ts',
       { pattern: 'test/specs/**/*' },
     ],
     exclude: [],
@@ -13,6 +13,12 @@ module.exports = function (config) {
     webpack: {
       target: 'web',
       devtool: 'inline-source-map',
+      resolve: {
+        extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+          '@src': __dirname + '/src',
+        },
+      },
       module: {
         rules: [
           {

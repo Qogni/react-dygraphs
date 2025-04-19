@@ -5,11 +5,14 @@ const config = {
   target: 'web',
   entry: {
     main: [
-      './demo/index.js',
+      './demo/index.tsx',
     ],
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx', 'ts', 'tsx'],
+    extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      '@src': __dirname + '/src',
+    },
   },
   module: {
     rules: [

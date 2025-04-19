@@ -7,7 +7,7 @@ import ModuleDefaultComponent, {
   Normalize,
   Downsample,
   StickyEdges,
-} from '../src'
+} from '@src'
 
 describe('module entry point', () => {
   it('should be a function', () => {

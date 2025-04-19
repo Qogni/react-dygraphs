@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Dygraph } from '../src'
+import { Dygraph } from '@src'
 
 const container = document.createElement('div')
 document.body.appendChild(container)
@@ -21,10 +21,10 @@ class DygraphDemo extends React.Component {
   }
 
   handlePointClick = (e, point) => {
-    this.setState({clicked: point.idx})
+    this.setState({ clicked: point.idx })
   }
 
-  render () {
+  render() {
     return (
       <div>
         <Dygraph
@@ -36,7 +36,7 @@ class DygraphDemo extends React.Component {
           onPointClick={this.handlePointClick}
           series={{
             teste1: {
-              'gapThreshold': 24 * 60 * 60 * 1000 * 24,
+              gapThreshold: 24 * 60 * 60 * 1000 * 24,
             },
           }}
           showLabelsOnHighlight={false}
