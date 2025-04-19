@@ -38,6 +38,9 @@ export default tseslint.config(
       '@stylistic/brace-style': [1, '1tbs', {
         allowSingleLine: true,
       }],
+      '@/object-curly-newline': [1, {
+        consistent: true,
+      }],
     },
   },
   {

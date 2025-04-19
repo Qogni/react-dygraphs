@@ -126,7 +126,8 @@ export var getDateAxis = function (startTime, endTime, granularity, opts, dg) {
       tickDate = new Date(tickTime)
     }
     while (tickTime <= endTime) {
-      ticks.push({ v: tickTime,
+      ticks.push({
+        v: tickTime,
         label: formatter.call(dg, tickDate, granularity, opts, dg),
       })
       tickTime += spacing
@@ -141,7 +142,8 @@ export var getDateAxis = function (startTime, endTime, granularity, opts, dg) {
     while (tickTime <= endTime) {
       if (granularity >= Granularity.DAILY
         || accessors.getHours(tickDate) % step === 0) {
-        ticks.push({ v: tickTime,
+        ticks.push({
+          v: tickTime,
           label: formatter.call(dg, tickDate, granularity, opts, dg),
         })
       }
