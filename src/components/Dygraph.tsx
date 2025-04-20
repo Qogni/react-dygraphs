@@ -144,7 +144,7 @@ export default class Dygraph extends React.PureComponent<ReactDygraphProps> {
   render() {
     return (
       <div
-        ref={root => (this.root = root)}
+        ref={(root) => { this.root = root }}
         style={this.props.style}
       />
     )

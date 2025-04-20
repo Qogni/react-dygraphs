@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Dygraph } from '@src'
 import type { dygraphs } from '@qogni/dygraphs'
 
@@ -65,4 +66,5 @@ class DygraphDemo extends React.Component {
   }
 }
 
-ReactDOM.render(<DygraphDemo />, container)
+const root = createRoot(container)
+root.render(<DygraphDemo />)

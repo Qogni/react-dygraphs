@@ -1,5 +1,5 @@
 import React from 'react'
-import * as ShallowRenderer from 'react-test-renderer/shallow'
+import { render } from '@testing-library/react'
 import { Dygraph } from '@src'
 
 describe('Dygraph', () => {
@@ -12,9 +12,7 @@ describe('Dygraph', () => {
   })
 
   it('should render a div', () => {
-    const renderer = ShallowRenderer.createRenderer()
-    renderer.render(<Dygraph data={[]} />)
-    const result = renderer.getRenderOutput()
-    expect(result.type).to.equal('div')
+    const rendered = render(<Dygraph />)
+    expect(rendered.container.tagName).to.equal('DIV')
   })
 })
