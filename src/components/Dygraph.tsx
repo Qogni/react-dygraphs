@@ -81,8 +81,10 @@ export default class Dygraph extends React.PureComponent<ReactDygraphProps> {
       initAttrs.plugins.push(this.constrainDateWindowPlugin)
     }
 
+    initAttrs.labels = this.props.labels ?? []
+
     if (this.root !== null) {
-      this.dygraph = new DygraphBase(this.root, this.props.data, initAttrs)
+      this.dygraph = new DygraphBase(this.root, this.props.data ?? [], initAttrs)
     }
 
     let dateWindow: DygraphBase['dateWindow_']
