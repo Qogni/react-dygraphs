@@ -11,7 +11,6 @@ import DateTickerWorkaround from '../plugins/DateTickerWorkaround'
 import SupressEmptyDataError from '../plugins/SupressEmptyDataError'
 import VisibilityRedraw from '../plugins/VisibilityRedraw'
 import ConstrainDateWindow from '../plugins/ConstrainDateWindow'
-import OptimizedDataHandler from '../datahandler/Optimized'
 import { ReactDygraphProps, splitProps } from './DygraphProps'
 import { getInteractionModelProxy } from '../proxy/InteractionModelProxy'
 import { overrideRangeSelector } from '../overrides/RangeSelectorOverride'
@@ -33,10 +32,6 @@ export default class Dygraph extends React.PureComponent<ReactDygraphProps> {
 
     this.interactionModel = initAttrs.interactionModel || DygraphBase.defaultInteractionModel
     initAttrs.interactionModel = getInteractionModelProxy(this.interactionModel)
-
-    if (!initAttrs.dataHandler) {
-      initAttrs.dataHandler = OptimizedDataHandler
-    }
 
     if (!initAttrs.plugins) {
       initAttrs.plugins = []

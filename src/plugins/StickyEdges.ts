@@ -2,7 +2,7 @@ import {default as Dygraph, dygraphs } from '@qogni/dygraphs'
 
 type Args = boolean | { right?: boolean, left?: boolean }
 
-export default class StickyEdges implements dygraphs.DygraphsBasePlugin {
+export default class StickyEdges implements dygraphs.DygraphsPlugin {
   static toString = () => {
     return 'StickyEdges Plugin'
   }
