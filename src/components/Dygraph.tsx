@@ -7,13 +7,11 @@ import FixedYAxis from '../plugins/FixedYAxis'
 import Normalize from '../plugins/Normalize'
 import Downsample from '../plugins/Downsample'
 import StickyEdges from '../plugins/StickyEdges'
-import DateTickerWorkaround from '../plugins/DateTickerWorkaround'
 import SupressEmptyDataError from '../plugins/SupressEmptyDataError'
 import VisibilityRedraw from '../plugins/VisibilityRedraw'
 import ConstrainDateWindow from '../plugins/ConstrainDateWindow'
 import { ReactDygraphProps, splitProps } from './DygraphProps'
 import { getInteractionModelProxy } from '../proxy/InteractionModelProxy'
-import { overrideRangeSelector } from '../overrides/RangeSelectorOverride'
 
 export default class Dygraph extends React.PureComponent<ReactDygraphProps> {
   displayName = 'Dygraph'
@@ -38,7 +36,6 @@ export default class Dygraph extends React.PureComponent<ReactDygraphProps> {
     }
 
     initAttrs.plugins.push(new SupressEmptyDataError())
-    initAttrs.plugins.push(new DateTickerWorkaround())
     initAttrs.plugins.push(new VisibilityRedraw())
 
     if (this.props.dayMarker) {
@@ -82,10 +79,6 @@ export default class Dygraph extends React.PureComponent<ReactDygraphProps> {
     if (this.props.constrainDateWindow) {
       this.constrainDateWindowPlugin = new ConstrainDateWindow()
       initAttrs.plugins.push(this.constrainDateWindowPlugin)
-    }
-
-    if (this.props.perserveRangeSelector !== true) {
-      overrideRangeSelector()
     }
 
     if (this.root !== null) {

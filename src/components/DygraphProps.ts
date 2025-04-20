@@ -20,7 +20,6 @@ interface ExtendedProps {
     ranges: Array<Array<number>>
   }
   onDateWindowChanged?: (dateWindow: [Date, Date]) => void
-  perserveRangeSelector?: boolean
   stickyEdges?: boolean | {
     left?: boolean
     right?: boolean
@@ -57,7 +56,6 @@ const EXTENDED_PROPS = [
   'fixedYAxis',
   'normalize',
   'onDateWindowChanged',
-  'perserveRangeSelector',
   'stickyEdges',
   'style',
 ]
