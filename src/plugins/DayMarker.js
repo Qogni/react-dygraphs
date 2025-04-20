@@ -1,6 +1,5 @@
 import { zeropad } from '@qogni/dygraphs/src/dygraph-utils'
-import { Granularity } from '@qogni/dygraphs/src/dygraph-tickers'
-import { pickDateTickGranularity } from '../Ticker/DateWorkaround'
+import { Granularity, pickDateTickGranularity } from '@qogni/dygraphs/src/dygraph-tickers'
 
 export default class DayMarker {
   static defaultOptions = {
