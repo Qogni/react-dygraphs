@@ -1,6 +1,6 @@
 import { dygraphs } from '@qogni/dygraphs'
 
-interface ExtendedProps {
+export interface ReactDygraphsExtendedProps {
   chartBackground?: boolean | string
   chartBorder?: boolean
   constrainDateWindow?: boolean
@@ -45,7 +45,7 @@ type RenamedProps = {
 
 type SameNameProps = Omit<dygraphs.Options, typeof RENAMED_PROPS[keyof typeof RENAMED_PROPS]>
 
-export type ReactDygraphProps = ExtendedProps & SameNameProps & RenamedProps & { data?: dygraphs.Data }
+export type ReactDygraphProps = ReactDygraphsExtendedProps & SameNameProps & RenamedProps & { data?: dygraphs.Data }
 
 const EXTENDED_PROPS = [
   'chartBackground',
@@ -64,12 +64,12 @@ function isRenamedProp(prop: string): prop is keyof RenamedProps {
   return prop in RENAMED_PROPS
 }
 
-function isExtendedProp(prop: string): prop is keyof ExtendedProps {
-  return prop in EXTENDED_PROPS
+function isExtendedProp(prop: string): prop is keyof ReactDygraphsExtendedProps {
+  return EXTENDED_PROPS.indexOf(prop) > -1
 }
 
 export function splitProps(props: ReactDygraphProps) {
-  const extendedProps: ExtendedProps = {}
+  const extendedProps: ReactDygraphsExtendedProps = {}
   const dygraphsProps: dygraphs.Options = {}
 
   for (const prop in props) {
