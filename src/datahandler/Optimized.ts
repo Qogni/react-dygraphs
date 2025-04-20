@@ -1,18 +1,18 @@
-import Dygraphs from '@qogni/dygraphs'
+import Dygraphs, { dygraphs } from '@qogni/dygraphs'
 
-const parseFloat = val => val === null ? NaN : val
+const parseFloat = (val: number|null) => val === null ? NaN : val
 
 // https://github.com/danvk/dygraphs/pull/896
 export default class OptimizedDataHandler extends Dygraphs.DataHandlers.DefaultHandler {
-  seriesToPoints = (series, setName, boundaryIdStart) => {
-    const points = []
+  seriesToPoints(series: [number, number][], setName: string, boundaryIdStart: number): dygraphs.Point[] {
+    const points: dygraphs.Point[] = []
 
     for (let i = 0; i < series.length; ++i) {
       points.push({
         x: NaN,
         y: NaN,
         xval: parseFloat(series[i][0]),
-        yval: series[i][1] === null ? null : parseFloat(series[i][1]),
+        yval: series[i][1] === null ? undefined : parseFloat(series[i][1]),
         name: setName,
         idx: i + boundaryIdStart,
         canvasx: NaN,

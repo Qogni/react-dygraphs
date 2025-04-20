@@ -1,13 +1,20 @@
-export default class StickyEdges {
+import {default as Dygraph, dygraphs } from '@qogni/dygraphs'
+
+type Args = boolean | { right?: boolean, left?: boolean }
+
+export default class StickyEdges implements dygraphs.DygraphsBasePlugin {
   static toString = () => {
     return 'StickyEdges Plugin'
   }
 
-  constructor({ right = true, left = false } = {}) {
-    this.updateOptions(arguments[0])
+  private stickyLeft: boolean = false
+  private stickyRight: boolean = false
+
+  constructor(args: Args = { right: true, left: false }) {
+    this.updateOptions(args)
   }
 
-  updateOptions = (options) => {
+  updateOptions = (options: Args) => {
     if (typeof options === 'boolean') {
       this.stickyRight = options
       this.stickyLeft = options
@@ -19,11 +26,11 @@ export default class StickyEdges {
     }
   }
 
-  activate = (dygraph) => {
+  activate = (dygraph: Dygraph) => {
     let shouldStickRight = false
     let shouldStickLeft = false
 
-    const dataWillUpdate = (e) => {
+    const dataWillUpdate: dygraphs.DataWillUpdateHandler = (e) => {
       if (e.dygraph.rawData_) {
         const [min, max] = e.dygraph.xAxisExtremes()
 
@@ -38,9 +45,9 @@ export default class StickyEdges {
       }
     }
 
-    const predraw = (e) => {
+    const predraw: dygraphs.PredrawHandler = (e) => {
       if (e.dygraph.rawData_ && e.dygraph.dateWindow_ !== undefined) {
-        const dateWindow = e.dygraph.dateWindow_.slice(0)
+        const dateWindow: [number, number] = e.dygraph.dateWindow_.slice(0) as [number, number]
 
         if (shouldStickRight) {
           dateWindow[1] = e.dygraph.rawData_[e.dygraph.rawData_.length - 1][0]

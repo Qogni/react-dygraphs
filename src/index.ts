@@ -1,11 +1,11 @@
-import Dygraph from './components/Dygraph.js'
-import DayMarker from './plugins/DayMarker.js'
-import ChartBackground from './plugins/ChartBackground.js'
-import ChartBorder from './plugins/ChartBorder.js'
-import FixedYAxis from './plugins/FixedYAxis.js'
-import Normalize from './plugins/Normalize.js'
-import Downsample from './plugins/Downsample.js'
-import StickyEdges from './plugins/StickyEdges.js'
+import Dygraph from './components/Dygraph'
+import DayMarker from './plugins/DayMarker'
+import ChartBackground from './plugins/ChartBackground'
+import ChartBorder from './plugins/ChartBorder'
+import FixedYAxis from './plugins/FixedYAxis'
+import Normalize from './plugins/Normalize'
+import Downsample from './plugins/Downsample'
+import StickyEdges from './plugins/StickyEdges'
 
 export default Dygraph
 export {

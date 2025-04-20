@@ -25,11 +25,10 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.24.0",
-    "@qogni/dygraphs": "^2.2.1",
+    "@qogni/dygraphs": "^2.2.3",
     "@stylistic/eslint-plugin": "^4.2.0",
     "@stylistic/eslint-plugin-ts": "^4.2.0",
     "@types/chai": "^5.2.1",
-    "@types/dygraphs": "^2.1.10",
     "@types/mocha": "^10.0.10",
     "@types/react": "^16.14.63",
     "@types/react-dom": "^16.9.25",
@@ -48,7 +47,6 @@
     "karma-sourcemap-loader": "^0.4.0",
     "karma-webpack": "^5.0.1",
     "mocha": "^5.0.1",
-    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.0.0",
@@ -70,8 +68,7 @@
     "url": "https://github.com/qogni/react-dygraphs/issues"
   },
   "peerDependencies": {
-    "@qogni/dygraphs": "^2.2.1",
-    "prop-types": "^15.6.0",
+    "@qogni/dygraphs": "^2.2.2",
     "react": "15.x || 16.x",
     "react-dom": "15.x || 16.x"
   },

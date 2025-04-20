@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dygraph } from '@src'
-import type { dygraphs } from 'dygraphs'
+import type { dygraphs } from '@qogni/dygraphs'
 
 const container = document.createElement('div')
 document.body.appendChild(container)
@@ -25,28 +25,42 @@ class DygraphDemo extends React.Component {
     this.setState({ clicked: point.idx })
   }
 
+  gapThresholdFunction = (prevPoint: dygraphs.Point, curPoint: dygraphs.Point) => {
+    if (curPoint.xval === undefined || prevPoint.xval === undefined) {
+      return false
+    }
+
+    return (curPoint.xval - prevPoint.xval) >= (24 * 60 * 60 * 1000 * 12)
+  }
+
+  teste1gapThresholdFunction = (prevPoint: dygraphs.Point, curPoint: dygraphs.Point) => {
+    if (curPoint.xval === undefined || prevPoint.xval === undefined) {
+      return false
+    }
+
+    return (curPoint.xval - prevPoint.xval) >= (24 * 60 * 60 * 1000 * 24)
+  }
+
   render() {
     return (
-      <div>
-        <Dygraph
-          connectSeparatedPoints
-          data={this.state.data}
-          fixedYAxis
-          gapThreshold={24 * 60 * 60 * 1000 * 12}
-          labels={['tempo', 'teste1', 'teste2']}
-          onPointClick={this.handlePointClick}
-          series={{
-            teste1: {
-              gapThreshold: 24 * 60 * 60 * 1000 * 24,
-            },
-          }}
-          showLabelsOnHighlight={false}
-          showRangeSelector
-          strokeWidth={3}
-          valueRange={[0, 120]}
-          width={1200}
-        />
-      </div>
+      <Dygraph
+        connectSeparatedPoints
+        data={this.state.data}
+        fixedYAxis
+        gapThreshold={this.gapThresholdFunction}
+        labels={['tempo', 'teste1', 'teste2']}
+        onPointClick={this.handlePointClick}
+        series={{
+          teste1: {
+            gapThreshold: this.teste1gapThresholdFunction,
+          },
+        }}
+        showLabelsOnHighlight={false}
+        showRangeSelector
+        strokeWidth={3}
+        valueRange={[0, 120]}
+        width={1200}
+      />
     )
   }
 }
