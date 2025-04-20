@@ -20,8 +20,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "types": [
-      "chai",
-      "mocha"
+      "vitest/globals"
     ]
   },
   "include": ["src/**/*", "test/**/*"],

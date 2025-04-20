@@ -48,15 +48,7 @@ export default tseslint.config(
     languageOptions: {
       globals: {
         ...globals.node,
-        ...globals.chai,
-        ...globals.mocha,
       },
-    },
-  },
-  {
-    files: ['karma-ci.conf.js', 'webpack.config.js'],
-    languageOptions: {
-      globals: globals.node,
     },
   },
 )
